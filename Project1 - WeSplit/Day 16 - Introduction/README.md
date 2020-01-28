@@ -88,3 +88,44 @@ Form {
     }
 }
 ```
+
+## Navigation Bar
+
+Adding navigation bar.
+
+```swift
+var body: some View {
+    NavigationView {
+        Form {
+            Section {
+                Text("Hello World")
+            }
+        }
+    }
+}
+```
+
+You can add a title to navigation bar and this can be done by attaching _modifier_ wherever you've placed inside.
+
+`Modifiers` are a regular methods that always return a `new instance` of whatever you use them on.
+
+```swift
+var body: some View {
+    NavigationView {
+        Form {
+            Section {
+                Text("Hello World")
+            }
+        }
+    .navigationBarTitle(Text("SwiftUI"))
+    }
+}
+```
+
+> Tip: When we attach `.navigationBarTitle()` modifier to our form, Swift actually creates a new form that has a navigation bar title plus all existing contents you provided.
+
+You can set title small instead of large.
+
+```swift
+.navigationBarTitle(Text("SwiftUI"), displayMode: .inline)
+```
