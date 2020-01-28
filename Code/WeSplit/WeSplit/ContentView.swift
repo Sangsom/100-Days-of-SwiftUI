@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var tapCount = 0
 
     var body: some View {
-        Button("Tap Count: \(tapCount)") {
+        Button("Tap Counting: \(tapCount)") {
             self.tapCount += 1
         }
     }
