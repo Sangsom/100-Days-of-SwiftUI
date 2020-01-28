@@ -129,3 +129,31 @@ You can set title small instead of large.
 ```swift
 .navigationBarTitle(Text("SwiftUI"), displayMode: .inline)
 ```
+
+## Modifying program state
+
+> Views are a function of their state.
+
+The way how UI looks, how people see your app and how they can interact is determined by the `state of your program`.
+
+### Property Wrapper
+
+Swift allows to store program state in property wrappers that in SwiftUI is called `@State`.
+
+```swift
+struct ContentView: View {
+    @State var tapCount = 0
+
+    var body: some View {
+        Button("Tap Count: \(tapCount)") {
+            self.tapCount += 1
+        }
+    }
+}
+```
+
+> Tip: Apple recommends to add `private` access control for `@State` property wrappers.
+
+```swift
+@State private var tapCount = 0
+```
