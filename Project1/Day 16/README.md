@@ -1,3 +1,0 @@
-# Project 1, part one
-
-In current we will review `Form`, `NavigationView`, `@State`, and more...
