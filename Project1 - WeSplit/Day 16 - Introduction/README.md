@@ -157,3 +157,22 @@ struct ContentView: View {
 ```swift
 @State private var tapCount = 0
 ```
+
+## State binding
+
+In this example we create a `TextField`. In SwiftUI for `TextField`'s to be able to work in needs to bind a state. That is in order to show a current value it needs to read it from somewhere, and in order to save a value it needs a to save it somewhere.
+
+It's called _two-way biding_: we bind the text field so that it shows the value of our property, but we also bind it so that any changes to the text field also updates the property.
+
+```swift
+struct ContentView: View {
+    @State private var name = ""
+
+    var body: some View {
+        Form {
+            TextField("Enter your name", text: $name)
+            Text("You name is \(name)")
+        }
+    }
+}
+```
