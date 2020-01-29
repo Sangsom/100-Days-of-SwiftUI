@@ -176,3 +176,47 @@ struct ContentView: View {
     }
 }
 ```
+
+## Creating views in loop
+
+We can create as much views in SwiftUi with `ForEach` loop.
+
+```swift
+Form {
+    ForEach(0 ..< 100) { number in
+        Text("Row \(number)")
+    }
+}
+```
+
+We can also use a shorthand syntax:
+
+```swift
+Form {
+    ForEach(0 ..< 100) {
+        Text("Row \($0)")
+    }
+}
+```
+
+It's useful to use for `Picker` views:
+
+```swift
+struct ContentView: View {
+    let students = ["Harry", "Hermione", "Ron"]
+    @State private var selectedStudent = 0
+
+    var body: some View {
+        VStack {
+            Picker("Select your student", selection: $selectedStudent) {
+                ForEach(0 ..< students.count) {
+                    Text(self.students[$0])
+                }
+            }
+            Text("You chose: Student # \(students[selectedStudent])")
+        }
+    }
+}
+```
+
+![Picker View](https://i.imgur.com/eJBjoR9.png)
