@@ -219,4 +219,4 @@ struct ContentView: View {
 }
 ```
 
-![Picker View](https://i.imgur.com/eJBjoR9.png)
+![Picker View](https://i.imgur.com/6fnc5MH.png)
