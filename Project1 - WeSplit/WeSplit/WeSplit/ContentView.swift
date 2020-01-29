@@ -16,20 +16,22 @@ struct ContentView: View {
     let tipPercentages = [10, 15, 20, 25, 0]
 
     var body: some View {
-        Form {
-            Section {
-                TextField("Amount", text: $checkAmount)
-                    .keyboardType(/*@START_MENU_TOKEN@*/.decimalPad/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                Section {
+                    TextField("Amount", text: $checkAmount)
+                        .keyboardType(/*@START_MENU_TOKEN@*/.decimalPad/*@END_MENU_TOKEN@*/)
 
-                Picker("Number of people", selection: $numberOfPeople) {
-                    ForEach(2 ..< 100) {
-                        Text("\($0) people")
+                    Picker("Number of people", selection: $numberOfPeople) {
+                        ForEach(2 ..< 100) {
+                            Text("\($0) people")
+                        }
                     }
                 }
-            }
 
-            Section {
-                Text("$\(checkAmount)")
+                Section {
+                    Text("$\(checkAmount)")
+                }
             }
         }
     }
