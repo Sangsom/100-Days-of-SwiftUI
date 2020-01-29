@@ -20,6 +20,12 @@ struct ContentView: View {
             Section {
                 TextField("Amount", text: $checkAmount)
                     .keyboardType(/*@START_MENU_TOKEN@*/.decimalPad/*@END_MENU_TOKEN@*/)
+
+                Picker("Number of people", selection: $numberOfPeople) {
+                    ForEach(2 ..< 100) {
+                        Text("\($0) people")
+                    }
+                }
             }
 
             Section {
