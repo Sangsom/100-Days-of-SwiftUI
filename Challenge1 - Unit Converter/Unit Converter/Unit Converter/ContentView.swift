@@ -9,40 +9,65 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var fromUnit = ""
-    @State private var toUnit = ""
-    @State private var result = ""
-
+    @State private var input = "0"
     @State private var selectedFromUnit = 0
     @State private var selectedToUnit = 1
 
     let temperatureUnits = ["Celsius", "Fahrenheit", "Kelvin"]
 
+    var convertedResult: Double {
+        let unit = Double(input) ?? 0
+        var result: Double = 0
+
+        switch (selectedFromUnit, selectedToUnit) {
+        case (0, 1):
+            result = (unit * 9 / 5) + 32
+        case (0, 2):
+            result = unit + 273
+        case (1, 0):
+            result = 5 / 9 * (unit - 32)
+        case (1, 2):
+            result = 5 / 9 * (unit - 32) + 273
+        case (2, 0):
+            result = unit - 273
+        case (2, 1):
+            result = 9 / 5 * (unit - 273) + 32
+        default:
+            result = unit
+        }
+
+        return result
+    }
+
+
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Units to convert from")) {
-                    TextField("From", text: $fromUnit)
+                Section(header: Text(temperatureUnits[selectedFromUnit])) {
+                    TextField("From", text: $input)
                         .keyboardType(.decimalPad)
+                }
 
+                Section(header: Text("From")) {
                     Picker("Select units", selection: $selectedFromUnit) {
                         ForEach(0 ..< temperatureUnits.count) {
                             Text("\(self.temperatureUnits[$0])")
                         }
                     }
-                        .pickerStyle(SegmentedPickerStyle())
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
-                Section(header: Text("Units to convert to")) {
-                    TextField("To", text: $toUnit)
-                        .keyboardType(.decimalPad)
-
+                Section(header: Text("To")) {
                     Picker("Select units", selection: $selectedToUnit) {
                         ForEach(0 ..< temperatureUnits.count) {
                             Text("\(self.temperatureUnits[$0])")
                         }
                     }
-                        .pickerStyle(SegmentedPickerStyle())
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+
+                Section(header: Text(temperatureUnits[selectedToUnit])) {
+                    Text("\(convertedResult, specifier: "%.2f")")
                 }
             }
         .navigationBarTitle(Text("Unit Converter"))
