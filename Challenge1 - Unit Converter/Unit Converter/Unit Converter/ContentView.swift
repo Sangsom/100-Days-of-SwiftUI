@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var input = "0"
+    @State private var input = ""
     @State private var selectedFromUnit = 0
     @State private var selectedToUnit = 1
 
@@ -44,7 +44,7 @@ struct ContentView: View {
         NavigationView {
             Form {
                 Section(header: Text(temperatureUnits[selectedFromUnit])) {
-                    TextField("From", text: $input)
+                    TextField("0.0", text: $input)
                         .keyboardType(.decimalPad)
                 }
 
