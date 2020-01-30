@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var fromUnit = ""
+    @State private var selectedFromUnit = 0
     @State private var toUnit = ""
     @State private var result = ""
 
@@ -18,8 +19,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    Text("Hello")
+                Section(header: Text("Units to convert from")) {
+                    TextField("From", text: $fromUnit)
+                        .keyboardType(.decimalPad)
+
+                    Picker("Select units", selection: $selectedFromUnit) {
+                        ForEach(0 ..< temperatureUnits.count) {
+                            Text("\(self.temperatureUnits[$0])")
+                        }
+                    }
+                .pickerStyle(SegmentedPickerStyle())
                 }
             }
         .navigationBarTitle(Text("Unit Converter"))
