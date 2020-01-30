@@ -9,6 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var fromUnit = ""
+    @State private var toUnit = ""
+    @State private var result = ""
+
+    let temperatureUnits = ["Celsius", "Fahrenheit", "Kelvin"]
+
     var body: some View {
         NavigationView {
             Form {
