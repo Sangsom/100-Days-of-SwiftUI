@@ -7,6 +7,6 @@ In the result app shows how much money everyone must pay.
 
 ## Challenge
 
-1. Add a header to the third section, saying “Amount per person”
-2. Add another section showing the total amount for the check – i.e., the original amount plus tip value, without dividing by the number of people.
-3. Change the “Number of people” picker to be a text field, making sure to use the correct keyboard type.
+- ✅ Add a header to the third section, saying “Amount per person”.
+- ✔️ Add another section showing the total amount for the check – i.e., the original amount plus tip value, without dividing by the number of people.
+- ✔️ Change the “Number of people” picker to be a text field, making sure to use the correct keyboard type.
