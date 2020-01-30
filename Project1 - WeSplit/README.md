@@ -3,9 +3,13 @@
 This is a check-splitting app that allows to enter the total cost of food, select how much tip you want to leave, and how many people are involved.
 In the result app shows how much money everyone must pay.
 
+## Notes
+
+All the notes about techniques used in App are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project1%20-%20WeSplit/Introduction) folder.
+
 ---
 
-## Challenge
+## Challenges
 
 - ✅ Add a header to the third section, saying “Amount per person”.
 - ✅ Add another section showing the total amount for the check – i.e., the original amount plus tip value, without dividing by the number of people.
