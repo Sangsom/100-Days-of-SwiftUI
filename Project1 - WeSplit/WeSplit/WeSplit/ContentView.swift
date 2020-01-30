@@ -37,6 +37,12 @@ struct ContentView: View {
         return grandTotal
     }
 
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.darkGray,
+            .font : UIFont(name:"Rockwell", size: 40)!]
+    }
+
     var body: some View {
         NavigationView {
             Form {
