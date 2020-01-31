@@ -39,6 +39,11 @@ struct ContentView: View {
         return result
     }
 
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemIndigo,
+            .font : UIFont(name:"Rockwell", size: 40)!]
+    }
 
     var body: some View {
         NavigationView {
