@@ -1,3 +1,3 @@
 # Unit Converter
 
-![Unit Converter](https://i.imgur.com/dafRb4r.gif)
+![Unit Converter](https://media.giphy.com/media/H3xFiOERWcawsqPvis/200w_d.gif)
