@@ -7,4 +7,4 @@ It's just a temperature unit converter that converts temperatures between:
 - Fahrenheit
 - Kelvin
 
-![Unit Converter](https://media.giphy.com/media/H3xFiOERWcawsqPvis/200w_d.gif)
+![Unit Converter](https://media.giphy.com/media/H3xFiOERWcawsqPvis/giphy.gif)
