@@ -7,3 +7,7 @@ In this repository I'm documenting my thoughts and taking notes for every projec
 1. [WeSplit](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project1%20-%20WeSplit)
 
 ![WeSplit](https://media.giphy.com/media/H1qyVtZYFEc4xXfyiM/giphy.gif)
+
+2. [Unit Converter](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge1%20-%20Unit%20Converter)
+
+![Unit Converter](https://media.giphy.com/media/H3xFiOERWcawsqPvis/200w_d.gif)
