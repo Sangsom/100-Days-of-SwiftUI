@@ -167,3 +167,32 @@ struct ContentView: View {
     }
 }
 ```
+
+## ClipShape
+
+There are four built-in shapes in SwiftUI:
+
+- Rectangle
+- Rounded circle
+- Circle
+- Capsule
+
+We can use them to make our Views shaped as we want.
+
+```swift
+.slipShape(Capsule())
+```
+
+## Overlay
+
+With help of overlays we can add borders to views.
+
+This creates image to be with rounded borders, with a black border around and shadow.
+
+```swift
+Image(self.countries[number])
+    .renderingMode(.original)
+    .clipShape(Capsule())
+    .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+    .shadow(color: .black, radius: 2)
+```
