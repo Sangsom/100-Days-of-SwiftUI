@@ -62,3 +62,33 @@ ZStack {
     Text("Your content")
 }
 ```
+
+## Gradients
+
+In SwifUI we have 3 kind of Gradients to work with, and they are also `View`'s by itself.
+
+Gradients are made of several components:
+
+- Array of colors to show
+- Size and direction information
+- Type of gradient
+
+### Linear Gradient
+
+```swift
+LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom)
+```
+
+### Radial Gradient
+
+```swift
+RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
+```
+
+### Angular Gradient
+
+```swift
+AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center)
+```
+
+Gradients can be used as stand alone views or as a modifier.
