@@ -34,3 +34,31 @@ ZStack {
     Text("This is inside a stack")
 }
 ```
+
+## Colors and frames
+
+If we want to create a full background views color than we should put color as a `View` inside.
+
+`Color.red` is a view by itself, which is why it can be used like shapes and text. It automatically takes all the space available, but you can use also `frame()` modifier to make it a specific size.
+
+```swift
+ZStack {
+    Color.red
+    Text("Your content")
+}
+```
+
+Color with specified frame size.
+
+```swift
+Color.red.frame(width: 200, height: 200)
+```
+
+By default SwiftUI will take all the space that is within `Safe Area`. But you can add `edgesIgnoringSafeArea` modifier to ignore safe area.
+
+```swift
+ZStack {
+    Color.red.edgesIgnoringSafeArea(.all)
+    Text("Your content")
+}
+```
