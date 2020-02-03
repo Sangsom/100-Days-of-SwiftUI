@@ -92,3 +92,55 @@ AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purpl
 ```
 
 Gradients can be used as stand alone views or as a modifier.
+
+## Buttons and Images
+
+Buttons can be made in two ways.
+
+The simplest one is when the button contains just a text - you pass it a `title` of a button and within a `closure` run an action.
+
+```swift
+Button("Tap me!") {
+    print("Button was tapped")
+}
+```
+
+Another way is where you can make more advanced button views such as `Images` or a combination of `View`'s.
+
+```swift
+Button(action: {
+    print("Button was tapped")
+}) {
+    VStack {
+        Text("Tap me!")
+        Text("Le")
+    }
+    .frame(width: 200, height: 200, alignment: .center)
+    .background(Color.red)
+}
+```
+
+Here you can create a button by using system icon image.
+
+```swift
+Button(action: {
+    print("Edit button was tapped")
+}) {
+    Image(systemName: "pencil")
+}
+```
+
+Or combine with other views.
+
+```swift
+Button(action: {
+    print("Edit button was tapped")
+}) {
+    HStack(spacing: 10) {
+        Image(systemName: "pencil")
+        Text("Edit")
+    }
+}
+```
+
+> Tip: to remove for system icons system color, you can use `.renderingMode(.original)` modifier to force SwiftUI show original image.
