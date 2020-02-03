@@ -144,3 +144,26 @@ Button(action: {
 ```
 
 > Tip: to remove for system icons system color, you can use `.renderingMode(.original)` modifier to force SwiftUI show original image.
+
+## Alert messages
+
+In order to show an alert we need to use a `two-way` data binding to notify `Alert` when it should be shown.
+
+Alerts it self can be created wherever you want.
+
+```swift
+struct ContentView: View {
+    @State private var showingAlert = false
+
+    var body: some View {
+        Button("Show Alert") {
+            self.showingAlert.toggle()
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Hello SwiftUI"),
+                  message: Text("This is some detail message"),
+                  dismissButton: .default(Text("Ok")))
+        }
+    }
+}
+```
