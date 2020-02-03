@@ -18,7 +18,9 @@ struct ContentView: View {
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag off")
+                        .foregroundColor(.white)
                     Text(countries[correctAnswer])
+                        .foregroundColor(.white)
                 }
 
                 ForEach(0 ..< 3) { number in
@@ -29,6 +31,7 @@ struct ContentView: View {
                             .renderingMode(.original)
                     }
                 }
+                Spacer()
             }
         }
     }
