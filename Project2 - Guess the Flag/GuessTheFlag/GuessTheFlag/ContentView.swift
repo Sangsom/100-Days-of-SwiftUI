@@ -22,13 +22,14 @@ struct ContentView: View {
             .edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 VStack {
-                    Text("Tap the flag off")
+                    Text("Tap the flag of")
                         .foregroundColor(.white)
                     Text(countries[correctAnswer])
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
                 }
+                .frame(minWidth: 0, maxWidth: .infinity)
 
                 ForEach(0 ..< 3) { number in
                     Button(action: {
@@ -56,7 +57,7 @@ struct ContentView: View {
 
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
-            scoreTitle = "Correct"
+            scoreTitle = "Correct 👌"
             score += 10
         } else {
             scoreTitle = "Sorry bro, it was flag of \(countries[number]) 😤"
