@@ -16,9 +16,21 @@ struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
 
+    private let colors: [Color] = [
+        Color(UIColor.systemBlue),
+        Color(UIColor.systemGreen),
+        Color(UIColor.systemIndigo),
+        Color(UIColor.systemOrange),
+        Color(UIColor.systemPink),
+        Color(UIColor.systemPurple),
+        Color(UIColor.systemRed),
+        Color(UIColor.systemTeal),
+        Color(UIColor.systemYellow)
+    ]
+
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: getRandomColors()), startPoint: .top, endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 VStack {
@@ -70,6 +82,12 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+    }
+
+    func getRandomColors() -> [Color] {
+        let shuffled = colors.shuffled()
+
+        return [shuffled[0], shuffled[1]]
     }
 }
 
