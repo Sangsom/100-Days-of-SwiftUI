@@ -9,3 +9,7 @@ Reasons of why in `SwiftUI` are used structs instead of classes.
 - Structs are simpler and faster than classes.
 - In SwiftUI all views are just structs, holding only those attributes, properties that you defined, they don't inherit everything like in UIKit.
 - By creating views with structs, it forces us to think about isolating state in a clean way.
+
+## Modifiers
+
+When we add a modifier for our `SwiftUI` views, we actually create a new view every time the new change is applied.
