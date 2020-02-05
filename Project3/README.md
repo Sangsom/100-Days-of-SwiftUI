@@ -42,3 +42,17 @@ Section(header: Text("Total amount for the check")) {
 ![WeSplit](https://media.giphy.com/media/M9N73iOkDMYJFNoOrc/giphy.gif)
 
 - ✅Go back to project 2 and create a FlagImage() view that renders one flag image using the specific set of modifiers we had.
+
+```swift
+struct FlagImage: View {
+    var name: String
+
+    var body: some View {
+        Image(name)
+        .renderingMode(.original)
+        .clipShape(Capsule())
+        .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+        .shadow(color: .black, radius: 2)
+    }
+}
+```
