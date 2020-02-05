@@ -57,3 +57,23 @@ VStack {
 }
 .font(.title)
 ```
+
+## Views as properties
+
+We can create our views as struct properties and use them in our UI. Also we can later apply modifiers for each property directly.
+
+```swift
+struct ContentView: View {
+    let motto1 = Text("Draco dormiens")
+    let motto2 = Text("nunquam titillandus")
+
+    var body: some View {
+        VStack {
+            motto1
+                .foregroundColor(.red)
+            motto2
+                .foregroundColor(.blue)
+        }
+    }
+}
+```
