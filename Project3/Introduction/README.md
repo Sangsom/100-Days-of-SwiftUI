@@ -117,3 +117,80 @@ VStack(spacing: 10) {
         .foregroundColor(.yellow)
 }
 ```
+
+## Custom modifiers
+
+By default `SwiftUI` provides many built-in modifiers such as `font()`, `clipShape()`, etc. But it's possible to create custom modifiers to do something specific.
+
+We create a custom modifier called `Title()`, set up all the modifiers.
+
+```swift
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+```
+
+Afterwards we call it through `.modifier` modifier.
+
+```swift
+Text("Hello World")
+    .modifier(Title())
+```
+
+When working with custom modifiers it's often convenient to create `extensions` on `View` that allows easier to use them.
+
+```swift
+extension View {
+    func titleStyle() -> some View {
+        self.modifier(Title())
+    }
+}
+```
+
+Use it:
+
+```swift
+Text("Hello World")
+    .titleStyle(
+```
+
+Custom modifiers can also create entirely new structures.
+For example as this `Watermark`.
+
+```swift
+struct Watermark: ViewModifier {
+    var text: String
+
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(Color.black)
+        }
+    }
+}
+
+extension View {
+    func watermarked(with text: String) -> some View {
+        self.modifier(Watermark(text: text))
+    }
+}
+```
+
+Use it:
+
+```swift
+Color.blue
+    .frame(width: 300, height: 200)
+    .watermarked(with: "Hacking with Swift")
+```
