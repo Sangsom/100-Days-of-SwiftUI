@@ -1,6 +1,10 @@
-# Project 3 - Technique
+# Project 3 - Technique Project
 
 ---
+
+## Notes
+
+All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project2%20-%20Guess%20the%20Flag/Introduction) folder.
 
 ## Challenges
 
