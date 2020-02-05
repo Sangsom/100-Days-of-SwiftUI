@@ -4,7 +4,7 @@
 
 ## Notes
 
-All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project3/Introduction) folder.
+All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project3%20-%20Technique%20Project/Introduction) folder.
 
 ## Challenges
 
