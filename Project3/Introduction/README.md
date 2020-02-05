@@ -77,3 +77,43 @@ struct ContentView: View {
     }
 }
 ```
+
+## View composition
+
+SwiftUI allows us to break complex views down into smaller ones (components).
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            CapsuleText(text: "First")
+            CapsuleText(text: "Second")
+        }
+    }
+}
+
+struct CapsuleText: View {
+    var text: String
+
+    var body: some View {
+        Text(text)
+        .font(.largeTitle)
+        .padding()
+        .foregroundColor(.white)
+        .background(Color.blue)
+        .clipShape(Capsule())
+    }
+}
+```
+
+Also we can later apply individual modifiers for our custom views.
+In this case if we remove `foregroundColor` from `CapsuleText`, then we can use individual modifiers.
+
+```swift
+VStack(spacing: 10) {
+    CapsuleText(text: "First")
+        .foregroundColor(.white)
+    CapsuleText(text: "Second")
+        .foregroundColor(.yellow)
+}
+```
