@@ -30,3 +30,30 @@ struct ContentView: View {
     }
 }
 ```
+
+## Environment modifiers
+
+Many modifier can be applied to containers, in this case if we apply `.font()` modifier to `VStack`, font will be applied to all the text views inside container. It's called environment modifier.
+
+```swift
+VStack {
+    Text("Gryffindor")
+    Text("Hufflepuff")
+    Text("Ravenclaw")
+    Text("Slytherin")
+}
+.font(.title)
+```
+
+If child view have applied modifier then the priority will take child view and outer modifier will be applied to other views.
+
+```swift
+VStack {
+    Text("Gryffindor")
+        .font(.largeTitle)
+    Text("Hufflepuff")
+    Text("Ravenclaw")
+    Text("Slytherin")
+}
+.font(.title)
+```
