@@ -13,3 +13,20 @@ Reasons of why in `SwiftUI` are used structs instead of classes.
 ## Modifiers
 
 When we add a modifier for our `SwiftUI` views, we actually create a new view every time the new change is applied.
+
+## Conditional modifiers
+
+We can use modifiers conditionally with `ternary operator`.
+
+```swift
+struct ContentView: View {
+    @State private var useRedText = false
+
+    var body: some View {
+        Button("Hello World") {
+            self.useRedText.toggle()
+        }
+        .foregroundColor(useRedText ? .red : .blue)
+    }
+}
+```
