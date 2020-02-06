@@ -19,3 +19,9 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct Game {
+    let rocks = ["✊", "✊🏻", "✊🏼", "✊🏽", "✊🏾", "✊🏿"]
+    let papers = ["✋", "✋🏻", "✋🏼", "✋🏽", "✋🏾", "✋🏿"]
+    let scissors = ["✌️", "✌🏻", "✌🏼", "✌🏽", "✌🏾", "✌🏿"]
+}
