@@ -8,10 +8,24 @@
 
 import SwiftUI
 
+struct Game {
+    let hands = ["rock", "paper", "scissors"]
+}
+
 struct ContentView: View {
+    var game = Game()
+
     var body: some View {
         VStack {
-            Image("rock")
+            Spacer()
+            HStack {
+                ForEach(game.hands, id: \.self) {
+                    Image($0)
+                        .resizable()
+                        .frame(maxWidth: 100, maxHeight: 100)
+                        .padding()
+                }
+            }
         }
     }
 }
