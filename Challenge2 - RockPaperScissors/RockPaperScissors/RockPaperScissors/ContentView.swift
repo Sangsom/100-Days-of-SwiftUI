@@ -10,7 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Image("rock")
+        }
     }
 }
 
@@ -18,10 +20,4 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
-}
-
-struct Game {
-    let rocks = ["✊", "✊🏻", "✊🏼", "✊🏽", "✊🏾", "✊🏿"]
-    let papers = ["✋", "✋🏻", "✋🏼", "✋🏽", "✋🏾", "✋🏿"]
-    let scissors = ["✌️", "✌🏻", "✌🏼", "✌🏽", "✌🏾", "✌🏿"]
 }
