@@ -177,6 +177,72 @@ struct ContentView: View {
 }
 ```
 
+## Custom bindings
+
+Sample of custom binding that just stores the value away in another `@State` property and reads it back.
+
+```swift
+struct ContentView: View {
+    @State var selection = 0
+
+    var body: some View {
+        let binding = Binding(
+            get: { self.selection },
+            set: { self.selection = $0 }
+        )
+
+        return VStack {
+            Picker("Select a number", selection: binding) {
+                ForEach(0 ..< 3) {
+                    Text("Item \($0)")
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+        }
+    }
+}
+```
+
+Advanced use of custom bindings.
+
+```swift
+struct ContentView: View {
+    @State var agreedToTerms = false
+    @State var agreedToPrivacyPolicy = false
+    @State var agreedToEmails = false
+
+    var body: some View {
+        let agreedToAll = Binding<Bool>(
+            get: {
+                self.agreedToTerms && self.agreedToPrivacyPolicy && self.agreedToEmails
+            },
+            set: {
+                self.agreedToTerms = $0
+                self.agreedToPrivacyPolicy = $0
+                self.agreedToEmails = $0
+            }
+        )
+
+        return VStack {
+            Toggle(isOn: $agreedToTerms) {
+                Text("Agree to terms")
+            }
+
+            Toggle(isOn: $agreedToPrivacyPolicy) {
+                Text("Agree to privacy policy")
+            }
+
+            Toggle(isOn: $agreedToEmails) {
+                Text("Agree to receive shipping emails")
+            }
+
+            Toggle(isOn: agreedToAll) {
+                Text("Agree to all")
+            }
+        }
+    }
+}
+```
+
 ## Creating views in loop
 
 We can create as much views in SwiftUi with `ForEach` loop.
