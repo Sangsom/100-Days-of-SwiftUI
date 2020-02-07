@@ -11,3 +11,5 @@ In this App player must play RPS game versus computer.
 ✅The player must then tap the correct move to win or lose the game.  
 ✅If they are correct they score a point; otherwise they lose a point.  
 ✅The game ends after 10 questions, at which point their score is shown.
+
+![RPS](https://media.giphy.com/media/dt610Pd1g3I1YNlVe6/giphy.gif)
