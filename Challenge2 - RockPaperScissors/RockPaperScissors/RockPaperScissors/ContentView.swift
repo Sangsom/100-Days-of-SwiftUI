@@ -30,8 +30,10 @@ struct ContentView: View {
     @State private var enemyHand = 0
     @State private var shouldPlayerWin = false
     @State private var score = 0
+    @State private var currentRound = 0
 
     var game = Game()
+    let totalRounds = 10
 
     var winOrLose: String {
         return shouldPlayerWin ? "Win" : "Lose"
@@ -66,21 +68,29 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            self.nextRound()
+            self.startGame()
         }
+    }
+
+    func startGame() {
+        currentRound = 0
+        shouldPlayerWin = Bool.random()
+        enemyHand = Int.random(in: 0 ..< game.hands.count)
     }
 
     func nextRound() {
         shouldPlayerWin = Bool.random()
         enemyHand = Int.random(in: 0 ..< game.hands.count)
+        currentRound += 1
     }
 
     func handTapped(_ hand: String) {
-
-        compareHands(player: hand, pc: game.hands[enemyHand])
-        nextRound()
-
-        print("Player \(hand): PC \(game.hands[enemyHand]): WinOrLose - \(shouldPlayerWin)")
+        if currentRound <= totalRounds {
+            compareHands(player: hand, pc: game.hands[enemyHand])
+            nextRound()
+        } else {
+            // Show alert
+        }
     }
 
     func compareHands(player: String, pc: String) {
