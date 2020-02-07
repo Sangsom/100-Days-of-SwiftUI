@@ -64,16 +64,20 @@ struct ContentView: View {
                 }
             }
         }
+        .onAppear {
+            self.nextRound()
+        }
     }
 
     func nextRound() {
         shouldPlayerWin = Bool.random()
         enemyHand = Int.random(in: 0 ..< game.hands.count)
-        print(enemyHand)
     }
 
     func handTapped(_ hand: String) {
         nextRound()
+
+        print("Player \(hand): PC \(game.hands[enemyHand]): WinOrLose - \(shouldPlayerWin)")
     }
 }
 
