@@ -14,11 +14,15 @@ struct Game {
 
 struct HeaderView: View {
     var score: Int
+    var round: Int
 
     var body: some View {
         HStack {
-            Spacer()
             Text("Score: \(score)")
+                .font(.headline)
+                .foregroundColor(Color(.systemGray))
+            Spacer()
+            Text("Round: \(round)")
                 .font(.headline)
                 .foregroundColor(Color(.systemGray))
         }
@@ -30,10 +34,11 @@ struct ContentView: View {
     @State private var enemyHand = 0
     @State private var shouldPlayerWin = false
     @State private var score = 0
-    @State private var currentRound = 0
+    @State private var currentRound = 1
+    @State private var showAlert = false
 
     var game = Game()
-    let totalRounds = 10
+    let totalRounds = 3
 
     var winOrLose: String {
         return shouldPlayerWin ? "Win" : "Lose"
@@ -41,7 +46,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            HeaderView(score: score)
+            HeaderView(score: score, round: currentRound)
             Spacer()
             Text("You must")
                 .font(.headline)
@@ -53,7 +58,6 @@ struct ContentView: View {
             Image(game.hands[enemyHand])
             Spacer()
             HStack {
-
                 ForEach(game.hands, id: \.self) { hand in
                     Button(action: {
                         self.handTapped(hand)
@@ -70,10 +74,15 @@ struct ContentView: View {
         .onAppear {
             self.startGame()
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Game Over"), message: Text("You scored \(score) points"), dismissButton: .default(Text("Restart")) {
+                self.startGame()
+            })
+        }
     }
 
     func startGame() {
-        currentRound = 0
+        currentRound = 1
         shouldPlayerWin = Bool.random()
         enemyHand = Int.random(in: 0 ..< game.hands.count)
     }
@@ -81,15 +90,16 @@ struct ContentView: View {
     func nextRound() {
         shouldPlayerWin = Bool.random()
         enemyHand = Int.random(in: 0 ..< game.hands.count)
-        currentRound += 1
     }
 
     func handTapped(_ hand: String) {
-        if currentRound <= totalRounds {
+        if currentRound < totalRounds {
+            currentRound += 1
             compareHands(player: hand, pc: game.hands[enemyHand])
             nextRound()
         } else {
-            // Show alert
+            compareHands(player: hand, pc: game.hands[enemyHand])
+            showAlert = true
         }
     }
 
