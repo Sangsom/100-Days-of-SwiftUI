@@ -13,20 +13,33 @@ struct Game {
 }
 
 struct ContentView: View {
+    @State private var enemyHand = 0
+
     var game = Game()
 
     var body: some View {
         VStack {
             Spacer()
+            Text("Hello")
+            Spacer()
             HStack {
-                ForEach(game.hands, id: \.self) {
-                    Image($0)
-                        .resizable()
-                        .frame(maxWidth: 100, maxHeight: 100)
-                        .padding()
+                ForEach(game.hands, id: \.self) { hand in
+                    Button(action: {
+                        self.handTapped(hand)
+                    }) {
+                        Image(hand)
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(maxWidth: 100, maxHeight: 100)
+                            .padding()
+                    }
                 }
             }
         }
+    }
+
+    func handTapped(_ hand: String) {
+
     }
 }
 
