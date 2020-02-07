@@ -38,8 +38,13 @@ struct ContentView: View {
         }
     }
 
-    func handTapped(_ hand: String) {
+    func nextRound() {
+        enemyHand = Int.random(in: 0 ..< game.hands.count)
+        print(enemyHand)
+    }
 
+    func handTapped(_ hand: String) {
+        nextRound()
     }
 }
 
