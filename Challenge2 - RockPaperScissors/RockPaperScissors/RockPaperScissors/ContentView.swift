@@ -36,7 +36,6 @@ struct ContentView: View {
             Text(winOrLose)
                 .font(.largeTitle)
                 .foregroundColor(shouldPlayerWin ? Color(.systemGreen) : Color(.systemRed))
-
             Image(game.hands[enemyHand])
             Spacer()
             HStack {
@@ -44,11 +43,7 @@ struct ContentView: View {
                     Button(action: {
                         self.handTapped(hand)
                     }) {
-                        Image(hand)
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(maxWidth: 100, maxHeight: 100)
-                            .padding()
+                        HandImage(name: hand)
                     }
                 }
             }
