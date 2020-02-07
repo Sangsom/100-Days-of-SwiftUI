@@ -8,20 +8,35 @@
 
 import SwiftUI
 
+struct DiagramView: View {
+    var body: some View {
+        Image("diagram")
+            .renderingMode(.original)
+            .resizable()
+            .frame(maxWidth: 100, maxHeight: 100)
+    }
+}
+
 struct HeaderView: View {
     var score: Int
     var round: Int
 
     var body: some View {
-        HStack {
-            Text("Score: \(score)")
-                .font(.headline)
-                .foregroundColor(Color(.systemGray))
-            Spacer()
-            Text("Round: \(round)")
-                .font(.headline)
-                .foregroundColor(Color(.systemGray))
+        VStack {
+            HStack {
+                Text("Score: \(score)")
+                    .font(.headline)
+                    .foregroundColor(Color(.systemGray))
+                Spacer()
+                Text("Round: \(round)")
+                    .font(.headline)
+                    .foregroundColor(Color(.systemGray))
+                    .padding()
+            }
+            .padding()
+
+            DiagramView()
         }
-        .padding()
+
     }
 }
