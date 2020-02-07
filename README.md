@@ -15,3 +15,7 @@ In this repository I'm documenting my thoughts and taking notes for every projec
 3. [Guess the Flag](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project2%20-%20Guess%20the%20Flag)
 
 ![Guess the Flag](https://media.giphy.com/media/fUHHFf1OTMlj5ntMG4/giphy.gif)
+
+4. [Rock Paper Scissors](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge2%20-%20RockPaperScissors)
+
+![RPS](https://media.giphy.com/media/dt610Pd1g3I1YNlVe6/giphy.gif)
