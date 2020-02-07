@@ -14,13 +14,25 @@ struct Game {
 
 struct ContentView: View {
     @State private var enemyHand = 0
+    @State private var shouldPlayerWin = false
 
     var game = Game()
+
+    var winOrLose: String {
+        return shouldPlayerWin ? "Win" : "Lose"
+    }
 
     var body: some View {
         VStack {
             Spacer()
-            Text("Hello")
+            Text("You must")
+                .font(.headline)
+                .foregroundColor(Color(.systemGray))
+            Text(winOrLose)
+                .font(.largeTitle)
+                .foregroundColor(shouldPlayerWin ? Color(.systemGreen) : Color(.systemRed))
+
+            Image(game.hands[enemyHand])
             Spacer()
             HStack {
                 ForEach(game.hands, id: \.self) { hand in
@@ -39,6 +51,7 @@ struct ContentView: View {
     }
 
     func nextRound() {
+        shouldPlayerWin = Bool.random()
         enemyHand = Int.random(in: 0 ..< game.hands.count)
         print(enemyHand)
     }
