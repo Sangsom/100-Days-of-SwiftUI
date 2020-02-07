@@ -51,6 +51,7 @@ struct ContentView: View {
             Image(game.hands[enemyHand])
             Spacer()
             HStack {
+
                 ForEach(game.hands, id: \.self) { hand in
                     Button(action: {
                         self.handTapped(hand)
@@ -75,9 +76,59 @@ struct ContentView: View {
     }
 
     func handTapped(_ hand: String) {
+
+        compareHands(player: hand, pc: game.hands[enemyHand])
         nextRound()
 
         print("Player \(hand): PC \(game.hands[enemyHand]): WinOrLose - \(shouldPlayerWin)")
+    }
+
+    func compareHands(player: String, pc: String) {
+        if shouldPlayerWin {
+            if player == "rock" && pc == "paper" {
+                roundLose()
+            } else if player == "rock" && pc == "scissors" {
+                roundWon()
+            } else if player == "paper" && pc == "rock" {
+                roundWon()
+            } else if player == "paper" && pc == "scissors" {
+                roundLose()
+            } else if player == "scissors" && pc == "rock" {
+                roundLose()
+            } else if player == "scissors" && pc == "paper" {
+                roundWon()
+            } else {
+                draw()
+            }
+        } else {
+            if player == "rock" && pc == "paper" {
+                roundWon()
+            } else if player == "rock" && pc == "scissors" {
+                roundLose()
+            } else if player == "paper" && pc == "rock" {
+                roundLose()
+            } else if player == "paper" && pc == "scissors" {
+                roundWon()
+            } else if player == "scissors" && pc == "rock" {
+                roundWon()
+            } else if player == "scissors" && pc == "paper" {
+                roundLose()
+            } else {
+                draw()
+            }
+        }
+    }
+
+    func roundWon() {
+        score += 1
+    }
+
+    func roundLose() {
+        score -= 1
+    }
+
+    func draw() {
+        print("DRAW")
     }
 }
 
