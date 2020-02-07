@@ -12,9 +12,24 @@ struct Game {
     let hands = ["rock", "paper", "scissors"]
 }
 
+struct HeaderView: View {
+    var score: Int
+
+    var body: some View {
+        HStack {
+            Spacer()
+            Text("Score: \(score)")
+                .font(.headline)
+                .foregroundColor(Color(.systemGray))
+        }
+        .padding()
+    }
+}
+
 struct ContentView: View {
     @State private var enemyHand = 0
     @State private var shouldPlayerWin = false
+    @State private var score = 0
 
     var game = Game()
 
@@ -24,6 +39,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            HeaderView(score: score)
             Spacer()
             Text("You must")
                 .font(.headline)
