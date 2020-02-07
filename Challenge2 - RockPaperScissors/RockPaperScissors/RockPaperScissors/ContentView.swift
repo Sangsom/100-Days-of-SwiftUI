@@ -39,7 +39,7 @@ struct ContentView: View {
             Image(game.hands[enemyHand])
             Spacer()
             HStack {
-                ForEach(game.hands, id: \.self) { hand in
+                ForEach(game.hands.shuffled(), id: \.self) { hand in
                     Button(action: {
                         self.handTapped(hand)
                     }) {
