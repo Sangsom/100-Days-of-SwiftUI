@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var showAlert = false
 
     var game = Game()
-    let totalRounds = 3
+    let totalRounds = 10
 
     var winOrLose: String {
         return shouldPlayerWin ? "Win" : "Lose"
