@@ -40,7 +40,17 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationBarTitle("BetterRest")
+            .navigationBarItems(trailing:
+                Button(action: calculateBedTime) {
+                    Text("Calculate")
+                }
+            )
         }
+    }
+
+    func calculateBedTime() {
+
     }
 }
 
