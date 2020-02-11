@@ -13,9 +13,7 @@ struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 0
 
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
+    @State private var recommendendBedTime = ""
 
     static var defaultWakeTime: Date {
         var components = DateComponents()
@@ -51,6 +49,12 @@ struct ContentView: View {
                     }
                 }
 
+                Section(header: Text("Your recommended bed time is...")) {
+                    Text(recommendendBedTime)
+                        .font(.largeTitle)
+                        .foregroundColor(Color(UIColor.systemOrange))
+                }
+
             }
             .navigationBarTitle("BetterRest")
             .navigationBarItems(trailing:
@@ -58,11 +62,8 @@ struct ContentView: View {
                     Text("Calculate")
                 }
             )
-            .alert(isPresented: $showingAlert) {
-                Alert(
-                    title: Text(alertTitle),
-                    message: Text(alertMessage),
-                    dismissButton: .default(Text("OK")))
+            .onAppear {
+                self.calculateBedTime()
             }
         }
     }
@@ -81,14 +82,10 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
 
-            alertTitle = "Your ideal bedtime is..."
-            alertMessage = formatter.string(from: sleepTime)
+            recommendendBedTime = formatter.string(from: sleepTime)
         } catch {
-            alertTitle = "Error"
-            alertMessage = "Sorry, there was a problem calculating your bedtime."
+            recommendendBedTime = "Sorry, there was a problem calculating your bedtime."
         }
-
-        showingAlert = true
     }
 }
 
