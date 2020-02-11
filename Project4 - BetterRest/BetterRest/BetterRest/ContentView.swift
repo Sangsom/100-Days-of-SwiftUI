@@ -13,8 +13,6 @@ struct ContentView: View {
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 0
 
-    @State private var recommendendBedTime = ""
-
     static var defaultWakeTime: Date {
         var components = DateComponents()
         components.hour = 7
@@ -50,25 +48,17 @@ struct ContentView: View {
                 }
 
                 Section(header: Text("Your recommended bed time is...")) {
-                    Text(recommendendBedTime)
+                    Text(calculateBedTime())
                         .font(.largeTitle)
                         .foregroundColor(Color(UIColor.systemOrange))
                 }
 
             }
             .navigationBarTitle("BetterRest")
-            .navigationBarItems(trailing:
-                Button(action: calculateBedTime) {
-                    Text("Calculate")
-                }
-            )
-            .onAppear {
-                self.calculateBedTime()
-            }
         }
     }
 
-    func calculateBedTime() {
+    func calculateBedTime() -> String {
         let model = SleepCalculator()
 
         let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
@@ -82,9 +72,9 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
 
-            recommendendBedTime = formatter.string(from: sleepTime)
+            return formatter.string(from: sleepTime)
         } catch {
-            recommendendBedTime = "Sorry, there was a problem calculating your bedtime."
+            return "Sorry, there was a problem calculating your bedtime."
         }
     }
 }
