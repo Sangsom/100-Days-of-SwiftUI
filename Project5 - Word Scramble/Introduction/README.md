@@ -91,3 +91,18 @@ if let fileContents = try? String(contentsOf: fileURL) {
     // we loaded the file into a string!
 }
 ```
+
+## Working with Strings
+
+This will create and array of spliited input `["a", "b", "c"]`
+
+```swift
+let input = "a b c"
+let letters = input.components(separatedBy: " ")
+```
+
+This will trim all whitespace from sring.
+
+```swift
+let trimmed = letter?.trimmingCharacters(in: .whitespacesAndNewlines)
+```
