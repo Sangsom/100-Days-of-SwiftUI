@@ -19,3 +19,7 @@ In this repository I'm documenting my thoughts and taking notes for every projec
 4. [Rock Paper Scissors](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge2%20-%20RockPaperScissors)
 
 ![RPS](https://media.giphy.com/media/dt610Pd1g3I1YNlVe6/giphy.gif)
+
+5. [Better Rest](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project4%20-%20BetterRest)
+
+![Better Rest](https://media.giphy.com/media/XxvETyHuI6tFfKlEDL/giphy.gif)
