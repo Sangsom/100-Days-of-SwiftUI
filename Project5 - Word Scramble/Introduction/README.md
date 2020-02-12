@@ -73,3 +73,21 @@ struct ContentView: View {
     }
 }
 ```
+
+## Loading resources from app bundle
+
+In order to get any data from Apps main bundle you need to use:
+
+```swift
+if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
+    // we found the file in our bundle!
+}
+```
+
+When we have loaded file, we can then try to convert it into a `String`
+
+```swift
+if let fileContents = try? String(contentsOf: fileURL) {
+    // we loaded the file into a string!
+}
+```
