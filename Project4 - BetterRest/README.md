@@ -8,6 +8,8 @@ This project uses CoreML for suggesting the recommended time for bed, depending 
 
 ## Notes
 
+All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project4%20-%20BetterRest/Introduction) folder.
+
 ---
 
 ## Challenges
