@@ -18,17 +18,17 @@ struct ContentView: View {
             VStack {
                 TextField("Enter your word", text: $newWord, onCommit: addNewWord)
                     .autocapitalization(.none)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
 
                 List(usedWords, id: \.self) {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
             }
-
+            .padding()
+            .navigationBarTitle(rootWord)
+            .onAppear(perform: startGame)
         }
-    .navigationBarTitle(rootWord)
-    .textFieldStyle(RoundedBorderTextFieldStyle())
-    .padding()
     }
 
     func addNewWord() {
@@ -42,6 +42,20 @@ struct ContentView: View {
 
         usedWords.insert(answer, at: 0)
         newWord = ""
+    }
+
+    func startGame() {
+        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
+            if let startWords = try? String(contentsOf: startWordsURL) {
+                let allWords = startWords.components(separatedBy: "\n")
+
+                rootWord = allWords.randomElement() ?? "silkworm"
+                print(rootWord)
+                return
+            }
+        }
+
+        fatalError("Could not load start.txt from bundle.")
     }
 }
 
