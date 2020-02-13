@@ -9,13 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Finn", "Leia", "Luke", "Rey"]
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
 
     var body: some View {
-        List(people, id: \.self) {
-            Text($0)
+        NavigationView {
+            VStack {
+                TextField("Enter your word", text: $newWord)
+
+                List(usedWords, id: \.self) {
+                    Text($0)
+                }
+            }
+
         }
+    .navigationBarTitle(rootWord)
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
