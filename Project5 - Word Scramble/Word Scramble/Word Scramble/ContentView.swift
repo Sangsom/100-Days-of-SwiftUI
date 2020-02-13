@@ -97,7 +97,8 @@ struct ContentView: View {
     }
 
     func isReal(word: String) -> Bool {
-        guard word.count <= 3 else { return false }
+        guard word.count >= 3 else { return false }
+        guard word != rootWord else { return false }
 
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
