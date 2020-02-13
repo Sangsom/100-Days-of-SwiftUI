@@ -17,6 +17,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 TextField("Enter your word", text: $newWord, onCommit: addNewWord)
+                    .autocapitalization(.none)
 
                 List(usedWords, id: \.self) {
                     Text($0)
