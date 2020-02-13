@@ -25,6 +25,8 @@ struct ContentView: View {
 
         }
     .navigationBarTitle(rootWord)
+    .textFieldStyle(RoundedBorderTextFieldStyle())
+    .padding()
     }
     
 }
