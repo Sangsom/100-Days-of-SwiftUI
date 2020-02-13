@@ -31,6 +31,9 @@ struct ContentView: View {
             }
             .padding()
             .navigationBarTitle(rootWord)
+            .navigationBarItems(trailing: Button(action: startGame) {
+                Text("Restart")
+            })
             .onAppear(perform: startGame)
             .alert(isPresented: $showingError) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
