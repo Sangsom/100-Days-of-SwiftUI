@@ -20,6 +20,7 @@ struct ContentView: View {
                     .autocapitalization(.none)
 
                 List(usedWords, id: \.self) {
+                    Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
             }
