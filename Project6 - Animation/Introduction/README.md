@@ -98,3 +98,34 @@ Button("Tap Me") {
 ```
 
 ![Pulsing Button](https://media.giphy.com/media/cmU2FPTevGnyzZl4lS/giphy.gif)
+
+## Animating bindings
+
+`animation()` modifier can be applied to any SwiftUI binding, that allows to animate value between current and new one.
+
+This animates button scale when tapping on stepper.
+
+```swift
+struct ContentView: View {
+    @State private var animationAmount: CGFloat = 1
+
+    var body: some View {
+        VStack {
+            Stepper("Scale amount", value: $animationAmount.animation(), in: 1...10)
+
+            Spacer()
+
+            Button("Tap Me") {
+                self.animationAmount += 1
+            }
+            .padding()
+            .background(Color.red)
+            .foregroundColor(.white)
+            .clipShape(Circle())
+            .scaleEffect(animationAmount)
+        }
+    }
+}
+```
+
+![Animating button scale](https://media.giphy.com/media/StdBSbIFdAVeIKvojy/giphy.gif)
