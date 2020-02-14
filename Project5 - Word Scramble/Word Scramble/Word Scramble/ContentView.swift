@@ -18,6 +18,11 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
 
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemOrange
+        ]
+    }
 
     var body: some View {
         NavigationView {
