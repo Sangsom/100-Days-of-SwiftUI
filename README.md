@@ -23,3 +23,7 @@ In this repository I'm documenting my thoughts and taking notes for every projec
 5. [Better Rest](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project4%20-%20BetterRest)
 
 ![Better Rest](https://media.giphy.com/media/XxvETyHuI6tFfKlEDL/giphy.gif)
+
+6. [Word Scramble](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project5%20-%20Word%20Scramble)
+
+![Word Scramble](https://media.giphy.com/media/ZXB0riw362FZCcjO0s/giphy.gif)
