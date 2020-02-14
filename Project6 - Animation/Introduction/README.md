@@ -53,3 +53,21 @@ When we say `.animation(.easeOut(duration: 2))` we are creating an instance of a
 ```
 
 ![Animation Delay](https://media.giphy.com/media/iJDDzX06luFiOPLfMA/giphy.gif)
+
+This will play animation 3 times and reverse it.
+
+```swift
+.animation(
+    Animation.easeInOut(duration: 1)
+        .repeatCount(3, autoreverses: true)
+)
+```
+
+This repeats animation forever.
+
+```swift
+.animation(
+    Animation.easeInOut(duration: 1)
+        .repeatForever(autoreverses: true)
+)
+```
