@@ -129,3 +129,12 @@ struct ContentView: View {
 ```
 
 ![Animating button scale](https://media.giphy.com/media/StdBSbIFdAVeIKvojy/giphy.gif)
+
+We can also use it with `animation modifiers` like this:
+
+```swift
+Stepper("Scale amount", value: $animationAmount.animation(
+    Animation.easeInOut(duration: 1)
+        .repeatCount(3, autoreverses: true)
+), in: 1...10)
+```
