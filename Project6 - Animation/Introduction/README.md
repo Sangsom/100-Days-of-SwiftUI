@@ -71,3 +71,30 @@ This repeats animation forever.
         .repeatForever(autoreverses: true)
 )
 ```
+
+This makes a pulse effect of button
+
+```swift
+Button("Tap Me") {
+    // self.animationAmount += 1
+}
+.padding(40)
+.background(Color.red)
+.foregroundColor(.white)
+.clipShape(Circle())
+.overlay(
+    Circle()
+        .stroke(Color.red)
+        .scaleEffect(animationAmount)
+        .opacity(Double(2 - animationAmount))
+        .animation(
+            Animation.easeOut(duration: 1)
+                .repeatForever(autoreverses: false)
+        )
+)
+.onAppear {
+    self.animationAmount = 2
+}
+```
+
+![Pulsing Button](https://media.giphy.com/media/cmU2FPTevGnyzZl4lS/giphy.gif)
