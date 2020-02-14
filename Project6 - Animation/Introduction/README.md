@@ -24,3 +24,15 @@ struct ContentView: View {
 ```
 
 ![Implicit animation](https://media.giphy.com/media/fqhlnAApoMr5Kd56jm/giphy.gif)
+
+## Customizing animations
+
+### Spring animations
+
+This will make button scale up quickly and then bounce.
+
+```swift
+.animation(.interpolatingSpring(stiffness: 50, damping: 1))
+```
+
+![Spring animation](https://media.giphy.com/media/JQ4X1D9cOCjkXMvFzy/giphy.gif)
