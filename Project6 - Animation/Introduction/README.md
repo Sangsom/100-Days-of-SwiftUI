@@ -36,3 +36,20 @@ This will make button scale up quickly and then bounce.
 ```
 
 ![Spring animation](https://media.giphy.com/media/JQ4X1D9cOCjkXMvFzy/giphy.gif)
+
+Also we can adjust animation duration like:
+
+```swift
+.animation(.easeOut(duration: 2))
+```
+
+When we say `.animation(.easeOut(duration: 2))` we are creating an instance of an `Animation` struct that has its own set of modifiers. So we can attach modifiers directly to the animation to add a delay like this.
+
+```swift
+.animation(
+    Animation.easeInOut(duration: 2)
+        .delay(1)
+)
+```
+
+![Animation Delay](https://media.giphy.com/media/iJDDzX06luFiOPLfMA/giphy.gif)
