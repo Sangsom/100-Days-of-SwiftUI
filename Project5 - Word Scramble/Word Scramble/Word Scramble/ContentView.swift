@@ -37,6 +37,8 @@ struct ContentView: View {
                 }
 
                 Text("Score: \(score)")
+                    .font(.headline)
+                    
             }
             .padding()
             .navigationBarTitle(rootWord)
