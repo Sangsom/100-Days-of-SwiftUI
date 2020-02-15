@@ -138,3 +138,30 @@ Stepper("Scale amount", value: $animationAmount.animation(
         .repeatCount(3, autoreverses: true)
 ), in: 1...10)
 ```
+
+## Explicit animations
+
+Explicit animations are animations that are happening as a result of a state change.
+
+In explicit animations you add `withAnimation()` closure to ensure that changes are animated.s
+
+```swift
+struct ContentView: View {
+    @State private var animationAmount = 0.0
+
+    var body: some View {
+        Button("Tap Me") {
+            withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
+                self.animationAmount += 360
+            }
+        }
+        .padding(50)
+        .background(Color.red)
+        .foregroundColor(.white)
+        .clipShape(Circle())
+        .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+    }
+}
+```
+
+![Explicit Animation](https://media.giphy.com/media/PmALLrgE88vya98BuS/giphy.gif)
