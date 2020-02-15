@@ -189,3 +189,19 @@ struct ContentView: View {
 ```
 
 ![Animating button](https://media.giphy.com/media/IhCeBzPf9vc0SUHldw/giphy.gif)
+
+We can apply multiple `animation()` modifiers, to control each animation separately.
+
+```swift
+Button("Tap Me") {
+    self.enabled.toggle()
+}
+.frame(width: 200, height: 200)
+.background(enabled ? Color.blue : Color.red)
+.animation(.default)
+.foregroundColor(.white)
+.clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+.animation(.interpolatingSpring(stiffness: 10, damping: 1))
+```
+
+![Multiple animation modifiers](https://media.giphy.com/media/lOTXln6Uth0b3Am8Qs/giphy.gif)
