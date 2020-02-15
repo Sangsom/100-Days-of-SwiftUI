@@ -165,3 +165,27 @@ struct ContentView: View {
 ```
 
 ![Explicit Animation](https://media.giphy.com/media/PmALLrgE88vya98BuS/giphy.gif)
+
+## Controlling animation stack
+
+Here we demonstrate how order of applied animations matters, the same like applying modifiers for views.
+
+```swift
+struct ContentView: View {
+    @State private var enabled = false
+
+    var body: some View {
+        Button("Tap Me") {
+            self.enabled.toggle()
+        }
+        .frame(width: 200, height: 200)
+        .background(enabled ? Color.blue : Color.red)
+        .foregroundColor(.white)
+        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+        .animation(.default)
+
+    }
+}
+```
+
+![Animating button](https://media.giphy.com/media/IhCeBzPf9vc0SUHldw/giphy.gif)
