@@ -4,7 +4,11 @@ In this repository I'm documenting my thoughts and taking notes for every projec
 
 ---
 
-# ★ Challenge Projects
+## Technique Projects
+
+---
+
+## ★ Challenge Projects
 
 ★ [Unit Converter](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge1%20-%20Unit%20Converter)
 
@@ -14,7 +18,7 @@ In this repository I'm documenting my thoughts and taking notes for every projec
 
 ![RPS](https://media.giphy.com/media/dt610Pd1g3I1YNlVe6/giphy.gif)
 
-# ❖ Projects
+## ❖ Projects
 
 ❖ [WeSplit](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project1%20-%20WeSplit)
 
