@@ -205,3 +205,17 @@ Button("Tap Me") {
 ```
 
 ![Multiple animation modifiers](https://media.giphy.com/media/lOTXln6Uth0b3Am8Qs/giphy.gif)
+
+Additionally we can disable completely animations by disabling `nil` to modifier. For example like here we would disable animating background color but to change it immediately we just pass `nil` to animation modifier.
+
+```swift
+Button("Tap Me") {
+self.enabled.toggle()
+}
+.frame(width: 200, height: 200)
+.background(enabled ? Color.blue : Color.red)
+.animation(nil)
+.foregroundColor(.white)
+.clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+.animation(.interpolatingSpring(stiffness: 10, damping: 1))
+```
