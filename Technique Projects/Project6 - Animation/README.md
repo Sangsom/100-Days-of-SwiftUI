@@ -282,3 +282,32 @@ struct ContentView: View {
 ```
 
 ![Animating letters](https://media.giphy.com/media/ZBKDF33vbaUR4phEsh/giphy.gif)
+
+## Showing and hiding views with transitions
+
+Here we are animating rectangle view to show and hide.
+
+```swift
+struct ContentView: View {
+    @State private var isShowingRed = false
+
+    var body: some View {
+        VStack {
+            Button("Tap Me") {
+                withAnimation {
+                    self.isShowingRed.toggle()
+                }
+            }
+
+            if isShowingRed {
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 200, height: 200)
+                    .transition(.asymmetric(insertion: .scale, removal: .slide))
+            }
+        }
+    }
+}
+```
+
+![Animating transition](https://media.giphy.com/media/fAJvS4UfZicboNuev8/giphy.gif)
