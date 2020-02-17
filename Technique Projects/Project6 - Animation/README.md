@@ -13,3 +13,7 @@ Updates in `Guess the Flag` project.
 ✅When you tap the correct flag, make it spin around 360 degrees on the Y axis.
 
 ![Rotating flag if correct](https://media.giphy.com/media/YpSoJH7reJxMpmfIjA/giphy.gif)
+
+✅Make the other two buttons fade out to 25% opacity.
+
+![Reducing opacity](https://media.giphy.com/media/fXna4ZwHtVveP9bksJ/giphy.gif)
