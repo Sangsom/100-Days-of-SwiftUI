@@ -249,3 +249,36 @@ struct ContentView: View {
 ```
 
 ![Animating DragGesture](https://media.giphy.com/media/Wse2Iov8V8Ogy6VoXh/giphy.gif)
+
+In this sample we are adding arrays of letters and attaching `DragGesture()`. Resulting that when we are dragging letters, to them are added animation delay and making a nice snake effect, and when the dragging has over, it updates background color.
+
+```swift
+struct ContentView: View {
+    let letters = Array("Rinalds Domanovs")
+    @State private var enabled = false
+    @State private var dragAmount = CGSize.zero
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(0..<letters.count) { num in
+                Text(String(self.letters[num]))
+                    .padding(5)
+                    .font(.title)
+                    .background(self.enabled ? Color.blue : Color.red)
+                    .offset(self.dragAmount)
+                    .animation(Animation.default.delay(Double(num) / 20))
+            }
+        }
+        .gesture(
+            DragGesture()
+                .onChanged { self.dragAmount = $0.translation }
+                .onEnded { _ in
+                    self.dragAmount = .zero
+                    self.enabled.toggle()
+            }
+        )
+    }
+}
+```
+
+![Animating letters](https://media.giphy.com/media/ZBKDF33vbaUR4phEsh/giphy.gif)
