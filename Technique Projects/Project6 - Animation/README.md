@@ -311,3 +311,46 @@ struct ContentView: View {
 ```
 
 ![Animating transition](https://media.giphy.com/media/fAJvS4UfZicboNuev8/giphy.gif)
+
+## Building custom transitions using ViewModifier
+
+We can create completely new transitions in `SwiftUI`, by using `.modifier` transition, that accepts any view modifier we want.
+
+Here we need to create struct that defines effects..
+
+```swift
+struct CornerRotateModifier: ViewModifier {
+    let amount: Double
+    let anchor: UnitPoint
+
+    func body(content: Content) -> some View {
+        content.rotationEffect(.degrees(amount), anchor: anchor).clipped()
+    }
+}
+```
+
+And then we can wrap that inside a `AnyTransition` extension, making it rotate from -90 to 0 on its top leading corner:
+
+```swift
+extension AnyTransition {
+    static var pivot: AnyTransition {
+        .modifier(
+            active: CornerRotateModifier(amount: -90, anchor: .topLeading),
+            identity: CornerRotateModifier(amount: 0, anchor: .topLeading)
+        )
+    }
+}
+```
+
+And use this transition for any view:
+
+```swift
+if isShowingRed {
+    Rectangle()
+        .fill(Color.red)
+        .frame(width: 200, height: 200)
+        .transition(.pivot)
+}
+```
+
+![Custom pivot transition](https://media.giphy.com/media/hUFdIriaLWTkt5CbiD/giphy.gif)
