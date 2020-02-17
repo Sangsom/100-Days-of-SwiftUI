@@ -219,3 +219,33 @@ self.enabled.toggle()
 .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
 .animation(.interpolatingSpring(stiffness: 10, damping: 1))
 ```
+
+## Animating gestures
+
+In `SwiftUI` we can attach gestures to any views, and also they can be animated.
+
+In this example we have added `DragGesture()` to view and updating it's offset when dragging. When drag has ended, view is returning back to a zero point, which in this case is explicitly animated with `.withAnimation`.
+
+```swift
+struct ContentView: View {
+    @State private var dragAmount = CGSize.zero
+
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        .frame(width: 300, height: 200)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .offset(dragAmount)
+        .gesture(
+            DragGesture()
+                .onChanged { self.dragAmount = $0.translation }
+                .onEnded { _ in
+                    withAnimation(.spring()) {
+                        self.dragAmount = .zero
+                    }
+            }
+        )
+    }
+}
+```
+
+![Animating DragGesture](https://media.giphy.com/media/Wse2Iov8V8Ogy6VoXh/giphy.gif)
