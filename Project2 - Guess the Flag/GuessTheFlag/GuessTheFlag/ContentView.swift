@@ -34,7 +34,9 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: getRandomColors()), startPoint: .top, endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all)
+                .animation(.default)
+                .edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag of")
