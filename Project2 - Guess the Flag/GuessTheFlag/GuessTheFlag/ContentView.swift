@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score = 0
+    @State private var flagDegrees = [0.0, 0.0, 0.0]
 
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -46,9 +47,15 @@ struct ContentView: View {
                 ForEach(0 ..< 3) { number in
                     Button(action: {
                         self.flagTapped(number)
+                        withAnimation {
+                            if number == self.correctAnswer {
+                                self.flagDegrees[number] += 360
+                            }
+                        }
                     }) {
                         FlagImage(name: self.countries[number])
                     }
+                    .rotation3DEffect(.degrees(self.flagDegrees[number]), axis: (x: 0, y: 1, z: 0))
                 }
                 Text("Your score is \(score)")
                     .foregroundColor(.white)
