@@ -17,3 +17,6 @@ Updates in `Guess the Flag` project.
 ✅Make the other two buttons fade out to 25% opacity.
 
 ![Reducing opacity](https://media.giphy.com/media/fXna4ZwHtVveP9bksJ/giphy.gif)
+
+✅And if you tap on the wrong flag? Well, that’s down to you – get creative!
+![Incorrect flag](https://media.giphy.com/media/ZCBNLIwzI8jDpAdJFH/giphy.gif)

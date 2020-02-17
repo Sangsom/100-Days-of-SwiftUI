@@ -13,8 +13,8 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var score = 0
     @State private var flagDegrees = [0.0, 0.0, 0.0]
-//    @State private var opacity = [1.0, 1.0, 1.0]
     @State private var opacity = 1.0
+    @State private var offset = CGSize(width: 0, height: 0)
 
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
@@ -54,12 +54,20 @@ struct ContentView: View {
                                 self.flagDegrees[number] += 360
                             }
                         }
+
+                        if number != self.correctAnswer {
+                            withAnimation(Animation.easeOut(duration: 0.1).repeatCount(5)) {
+                                self.offset = CGSize(width: 5, height: 0)
+                            }
+                        }
                     }) {
                         FlagImage(name: self.countries[number])
                     }
                     .rotation3DEffect(.degrees(self.flagDegrees[number]), axis: (x: 0, y: 1, z: 0))
                     .opacity(self.showingScore && number != self.correctAnswer ? 0.25 : 1.0)
+                    .offset(self.offset)
                 }
+
                 Text("Your score is \(score)")
                     .foregroundColor(.white)
                     .font(.headline)
@@ -86,6 +94,7 @@ struct ContentView: View {
     }
 
     func askQuestion() {
+        self.offset = CGSize(width: 0, height: 0)
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
