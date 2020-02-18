@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var gameStarted = false
+    @State private var multiplicationTables: Int = 1
 
     var body: some View {
 
@@ -23,7 +24,15 @@ struct ContentView: View {
                     Text("Settings")
                         .font(.largeTitle)
 
-                    Spacer()
+                    Form {
+                        Section(header: Text("Select table")) {
+                            Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
+                        }
+                    }
+
+
+                    Text("Table \(multiplicationTables)")
+
 
                     Button("Start Game") {
                         self.gameStarted.toggle()
