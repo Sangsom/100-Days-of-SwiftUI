@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var gameStarted = false
+
     var body: some View {
-        Text("Hello, World!")
+
+        Group {
+            if gameStarted {
+                Text("Game Started")
+            } else {
+                Button("Start Game") {
+                    self.gameStarted.toggle()
+                }
+            }
+        }
     }
 }
 
