@@ -10,7 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var gameStarted = false
-    @State private var multiplicationTables: Int = 1
+    @State private var multiplicationTables: Int = 4
+    @State private var questionAmount = 10
+
+    var questions = [5, 10, 20, 0]
 
     var body: some View {
 
@@ -25,8 +28,17 @@ struct ContentView: View {
                         .font(.largeTitle)
 
                     Form {
-                        Section(header: Text("Select table")) {
+                        Section(header: Text("Select multiplication table difficulty")) {
                             Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
+                        }
+
+                        Section(header: Text("How many questions?")) {
+                            Picker("", selection: $questionAmount) {
+                                ForEach(questions, id: \.self) {
+                                    Text("\($0 == 0 ? "All" : "\($0)")")
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
                         }
                     }
 
