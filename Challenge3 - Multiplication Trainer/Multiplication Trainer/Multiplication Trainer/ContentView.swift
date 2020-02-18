@@ -15,10 +15,19 @@ struct ContentView: View {
 
         Group {
             if gameStarted {
+                // Game Started
                 Text("Game Started")
             } else {
-                Button("Start Game") {
-                    self.gameStarted.toggle()
+                // Game Settings
+                VStack {
+                    Text("Settings")
+                        .font(.largeTitle)
+
+                    Spacer()
+
+                    Button("Start Game") {
+                        self.gameStarted.toggle()
+                    }
                 }
             }
         }
