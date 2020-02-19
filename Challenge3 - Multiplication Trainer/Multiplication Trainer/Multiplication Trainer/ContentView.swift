@@ -8,12 +8,23 @@
 
 import SwiftUI
 
+struct Question {
+    var multiplier: Int
+    var multiplicand: Int
+    var result: Int {
+        get {
+            return multiplier * multiplicand
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var gameStarted = false
     @State private var multiplicationTables: Int = 4
     @State private var questionAmount = 10
+    @State private var questions: [Question] = []
 
-    var questions = [5, 10, 20, 0]
+    var questionsAmount = [5, 10, 20, 0]
 
     var body: some View {
 
@@ -32,7 +43,6 @@ struct ContentView: View {
                 } else {
                     // Game Settings
                     VStack {
-
                         Form {
                             Section(header: Text("Select multiplication table difficulty")) {
                                 Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
@@ -40,7 +50,7 @@ struct ContentView: View {
 
                             Section(header: Text("How many questions?")) {
                                 Picker("", selection: $questionAmount) {
-                                    ForEach(questions, id: \.self) {
+                                    ForEach(questionsAmount, id: \.self) {
                                         Text("\($0 == 0 ? "All" : "\($0)")")
                                     }
                                 }
@@ -50,6 +60,12 @@ struct ContentView: View {
                             Section {
                                 Button(action: {
                                     self.gameStarted.toggle()
+                                    // Generate game
+                                    for i in 1...self.multiplicationTables {
+                                        for j in 1...10 {
+                                            self.questions.append(Question(multiplier: i, multiplicand: j))
+                                        }
+                                    }
                                 }) {
                                     HStack {
                                         Text("Start".uppercased())
