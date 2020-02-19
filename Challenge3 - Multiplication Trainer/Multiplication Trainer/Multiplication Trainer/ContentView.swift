@@ -43,7 +43,7 @@ struct ContentView: View {
 
                         Section {
                             Button(action: {
-                                print("Star Game")
+                                self.gameStarted.toggle()
                             }) {
                                 HStack {
                                     Text("Start".uppercased())
@@ -55,12 +55,6 @@ struct ContentView: View {
                                 .cornerRadius(40)
                             }
                         }
-                    }
-
-                    Text("Table \(multiplicationTables)")
-
-                    Button("Start Game") {
-                        self.gameStarted.toggle()
                     }
                 }
             }
