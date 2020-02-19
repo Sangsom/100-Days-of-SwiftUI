@@ -17,48 +17,48 @@ struct ContentView: View {
 
     var body: some View {
 
-        Group {
-            if gameStarted {
-                // Game Started
-                Text("Game Started")
-            } else {
-                // Game Settings
-                VStack {
-                    Text("Settings")
-                        .font(.largeTitle)
+        NavigationView {
+                if gameStarted {
+                    // Game Started
+                    Text("Game Started")
+                } else {
+                    // Game Settings
+                    VStack {
 
-                    Form {
-                        Section(header: Text("Select multiplication table difficulty")) {
-                            Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
-                        }
-
-                        Section(header: Text("How many questions?")) {
-                            Picker("", selection: $questionAmount) {
-                                ForEach(questions, id: \.self) {
-                                    Text("\($0 == 0 ? "All" : "\($0)")")
-                                }
+                        Form {
+                            Section(header: Text("Select multiplication table difficulty")) {
+                                Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
                             }
-                            .pickerStyle(SegmentedPickerStyle())
-                        }
 
-                        Section {
-                            Button(action: {
-                                self.gameStarted.toggle()
-                            }) {
-                                HStack {
-                                    Text("Start".uppercased())
-                                        .font(.title)
-                                        .foregroundColor(Color(.systemOrange))
+                            Section(header: Text("How many questions?")) {
+                                Picker("", selection: $questionAmount) {
+                                    ForEach(questions, id: \.self) {
+                                        Text("\($0 == 0 ? "All" : "\($0)")")
+                                    }
                                 }
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .padding()
-                                .cornerRadius(40)
+                                .pickerStyle(SegmentedPickerStyle())
+                            }
+
+                            Section {
+                                Button(action: {
+                                    self.gameStarted.toggle()
+                                }) {
+                                    HStack {
+                                        Text("Start".uppercased())
+                                            .font(.title)
+                                            .foregroundColor(Color(.systemOrange))
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .padding()
+                                    .cornerRadius(40)
+                                }
                             }
                         }
                     }
+                    .navigationBarTitle(Text("Settings"))
                 }
-            }
         }
+
     }
 }
 
