@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-struct Question {
+struct Question: Identifiable {
+    var id = UUID()
     var multiplier: Int
     var multiplicand: Int
     var result: Int {
@@ -33,6 +34,9 @@ struct ContentView: View {
                     // Game Started
                     VStack {
                         Text("Velcome")
+                        List(questions) { question in
+                            Text("\(question.multiplier) * \(question.multiplicand) = \(question.result)")
+                        }
                     }
                     .navigationBarTitle(Text("Game Started"))
                     .navigationBarItems(leading: Button(action: {
@@ -61,10 +65,19 @@ struct ContentView: View {
                                 Button(action: {
                                     self.gameStarted.toggle()
                                     // Generate game
+                                    var tempQuestions: [Question] = []
+
                                     for i in 1...self.multiplicationTables {
                                         for j in 1...10 {
-                                            self.questions.append(Question(multiplier: i, multiplicand: j))
+                                            tempQuestions.append(Question(multiplier: i, multiplicand: j))
                                         }
+                                    }
+
+                                    tempQuestions.shuffle()
+                                    if self.questionAmount == 0 {
+                                        self.questions = tempQuestions
+                                    } else {
+                                        self.questions = Array(tempQuestions.prefix(self.questionAmount))
                                     }
                                 }) {
                                     HStack {
