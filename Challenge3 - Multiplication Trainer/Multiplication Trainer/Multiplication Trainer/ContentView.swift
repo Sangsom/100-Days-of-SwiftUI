@@ -20,7 +20,15 @@ struct ContentView: View {
         NavigationView {
                 if gameStarted {
                     // Game Started
-                    Text("Game Started")
+                    VStack {
+                        Text("Velcome")
+                    }
+                    .navigationBarTitle(Text("Game Started"))
+                    .navigationBarItems(leading: Button(action: {
+                        self.gameStarted.toggle()
+                    }) {
+                        Text("Back")
+                    })
                 } else {
                     // Game Settings
                     VStack {
@@ -56,6 +64,7 @@ struct ContentView: View {
                         }
                     }
                     .navigationBarTitle(Text("Settings"))
+                    .navigationBarItems(leading: EmptyView())
                 }
         }
 
