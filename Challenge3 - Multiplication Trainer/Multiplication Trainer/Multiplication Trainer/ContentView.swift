@@ -40,11 +40,24 @@ struct ContentView: View {
                             }
                             .pickerStyle(SegmentedPickerStyle())
                         }
+
+                        Section {
+                            Button(action: {
+                                print("Star Game")
+                            }) {
+                                HStack {
+                                    Text("Start".uppercased())
+                                        .font(.title)
+                                        .foregroundColor(Color(.systemOrange))
+                                }
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .padding()
+                                .cornerRadius(40)
+                            }
+                        }
                     }
 
-
                     Text("Table \(multiplicationTables)")
-
 
                     Button("Start Game") {
                         self.gameStarted.toggle()
