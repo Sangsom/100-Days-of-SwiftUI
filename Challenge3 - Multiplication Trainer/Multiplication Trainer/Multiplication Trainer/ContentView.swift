@@ -26,6 +26,7 @@ struct ContentView: View {
     @State private var questions: [Question] = []
     @State private var currentQuestion = 0
     @State private var userAnswer = ""
+    @State private var score = 0
 
     var questionsAmount = [5, 10, 20, 0]
 
@@ -115,11 +116,13 @@ struct ContentView: View {
         if answer == questions[currentQuestion].result {
             print("Correct answer")
             // Increment score
+            score += 1
             // Next question
             nextQuestion()
         } else {
             print("Wrongs")
             // Score
+            score -= 1
             // Next question
             nextQuestion()
         }
