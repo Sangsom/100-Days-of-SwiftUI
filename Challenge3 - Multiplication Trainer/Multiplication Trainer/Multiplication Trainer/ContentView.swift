@@ -44,7 +44,7 @@ struct ContentView: View {
                     .padding(.horizontal)
 
                     Button("Check") {
-                        print("Tapped")
+                        self.checkAnswer()
                     }
 
                     Spacer()
@@ -107,7 +107,30 @@ struct ContentView: View {
                 .navigationBarItems(leading: EmptyView())
             }
         }
+    }
 
+    func checkAnswer() {
+        guard let answer = Int(userAnswer) else { return }
+
+        if answer == questions[currentQuestion].result {
+            print("Correct answer")
+            // Increment score
+            // Next question
+            nextQuestion()
+        } else {
+            print("Wrongs")
+            // Score
+            // Next question
+            nextQuestion()
+        }
+    }
+
+    func nextQuestion() {
+        if currentQuestion < questions.count {
+            currentQuestion += 1
+        }
+
+        userAnswer = ""
     }
 }
 
