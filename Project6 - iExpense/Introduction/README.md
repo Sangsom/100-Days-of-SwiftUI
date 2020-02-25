@@ -43,3 +43,37 @@ So if we want to create sharable state we need to take 3 steps:
 - Make a class that conforms to `ObservableObject` protocol
 - Mark some properties with `@Published` so that any views using the class get updated when they change.
 - Create an instance of class using `@ObservedObject` property wrapper.
+
+## Showing and hiding Views with `.sheet()`
+
+```swift
+struct SecondView: View {
+    @Environment(\.presentationMode) var presentationMode
+
+    var name: String
+
+    var body: some View {
+        VStack {
+            Text("Hello \(name)")
+            Button("Dismiss") {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+}
+
+struct ContentView: View {
+    @State private var showingSheet = false
+
+    var body: some View {
+        Button("Show Sheet") {
+            self.showingSheet.toggle()
+        }
+        .sheet(isPresented: $showingSheet) {
+            SecondView(name: "Rinalds Domanovs")
+        }
+    }
+}
+```
+
+![Sheet usage](https://media.giphy.com/media/j5mn2ZqZxamrNDJfNT/giphy.gif)
