@@ -19,4 +19,5 @@ Updates in `Guess the Flag` project.
 ![Reducing opacity](https://media.giphy.com/media/fXna4ZwHtVveP9bksJ/giphy.gif)
 
 ✅And if you tap on the wrong flag? Well, that’s down to you – get creative!
+
 ![Incorrect flag](https://media.giphy.com/media/ZCBNLIwzI8jDpAdJFH/giphy.gif)
