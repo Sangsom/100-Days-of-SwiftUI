@@ -27,6 +27,7 @@ struct ContentView: View {
     @State private var currentQuestion = 0
     @State private var userAnswer = ""
     @State private var score = 0
+    @State private var showingAlert = false
 
     var questionsAmount = [5, 10, 20, 0]
 
@@ -35,6 +36,7 @@ struct ContentView: View {
             if gameStarted {
                 // Game Started
                 VStack {
+                    Text("Question \(currentQuestion + 1) of \(questions.count)")
                     Spacer()
                     HStack {
                         Text("What is \(questions[currentQuestion].multiplier) x \(questions[currentQuestion].multiplicand) = ")
@@ -108,6 +110,14 @@ struct ContentView: View {
                 .navigationBarItems(leading: EmptyView())
             }
         }
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text("Game Over"),
+                message: Text("You've scored \(score)"), dismissButton: .default(Text("OK"), action: {
+                    self.score = 0
+                    self.gameStarted = false
+                }))
+        }
     }
 
     func checkAnswer() {
@@ -129,8 +139,10 @@ struct ContentView: View {
     }
 
     func nextQuestion() {
-        if currentQuestion < questions.count {
+        if currentQuestion < questions.count - 1 {
             currentQuestion += 1
+        } else {
+            showingAlert = true
         }
 
         userAnswer = ""
