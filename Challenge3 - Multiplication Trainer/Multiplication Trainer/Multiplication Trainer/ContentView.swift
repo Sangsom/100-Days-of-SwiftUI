@@ -24,77 +24,88 @@ struct ContentView: View {
     @State private var multiplicationTables: Int = 4
     @State private var questionAmount = 10
     @State private var questions: [Question] = []
+    @State private var currentQuestion = 0
+    @State private var userAnswer = ""
 
     var questionsAmount = [5, 10, 20, 0]
 
     var body: some View {
-
-        NavigationView {
-                if gameStarted {
-                    // Game Started
-                    VStack {
-                        Text("Velcome")
-                        List(questions) { question in
-                            Text("\(question.multiplier) * \(question.multiplicand) = \(question.result)")
-                        }
+        return NavigationView {
+            if gameStarted {
+                // Game Started
+                VStack {
+                    Spacer()
+                    HStack {
+                        Text("What is \(questions[currentQuestion].multiplier) x \(questions[currentQuestion].multiplicand) = ")
+                        TextField("", text: $userAnswer)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .keyboardType(.numberPad)
                     }
-                    .navigationBarTitle(Text("Game Started"))
-                    .navigationBarItems(leading: Button(action: {
-                        self.gameStarted.toggle()
-                    }) {
-                        Text("Back")
-                    })
-                } else {
-                    // Game Settings
-                    VStack {
-                        Form {
-                            Section(header: Text("Select multiplication table difficulty")) {
-                                Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
-                            }
+                    .padding(.horizontal)
 
-                            Section(header: Text("How many questions?")) {
-                                Picker("", selection: $questionAmount) {
-                                    ForEach(questionsAmount, id: \.self) {
-                                        Text("\($0 == 0 ? "All" : "\($0)")")
-                                    }
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
-                            }
-
-                            Section {
-                                Button(action: {
-                                    self.gameStarted.toggle()
-                                    // Generate game
-                                    var tempQuestions: [Question] = []
-
-                                    for i in 1...self.multiplicationTables {
-                                        for j in 1...10 {
-                                            tempQuestions.append(Question(multiplier: i, multiplicand: j))
-                                        }
-                                    }
-
-                                    tempQuestions.shuffle()
-                                    if self.questionAmount == 0 {
-                                        self.questions = tempQuestions
-                                    } else {
-                                        self.questions = Array(tempQuestions.prefix(self.questionAmount))
-                                    }
-                                }) {
-                                    HStack {
-                                        Text("Start".uppercased())
-                                            .font(.title)
-                                            .foregroundColor(Color(.systemOrange))
-                                    }
-                                    .frame(minWidth: 0, maxWidth: .infinity)
-                                    .padding()
-                                    .cornerRadius(40)
-                                }
-                            }
-                        }
+                    Button("Check") {
+                        print("Tapped")
                     }
-                    .navigationBarTitle(Text("Settings"))
-                    .navigationBarItems(leading: EmptyView())
+
+                    Spacer()
+                    Spacer()
                 }
+                .font(.title)
+                .navigationBarTitle(Text("Game Started"))
+                .navigationBarItems(leading: Button(action: {
+                    self.gameStarted.toggle()
+                }) {
+                    Text("Back")
+                })
+            } else {
+                // Game Settings
+                Form {
+                    Section(header: Text("Select multiplication table difficulty")) {
+                        Stepper("\(multiplicationTables) table", value: $multiplicationTables, in: 1...12)
+                    }
+
+                    Section(header: Text("How many questions?")) {
+                        Picker("", selection: $questionAmount) {
+                            ForEach(questionsAmount, id: \.self) {
+                                Text("\($0 == 0 ? "All" : "\($0)")")
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                    }
+
+                    Section {
+                        Button(action: {
+                            self.gameStarted.toggle()
+                            // Generate game
+                            var tempQuestions: [Question] = []
+
+                            for i in 1...self.multiplicationTables {
+                                for j in 1...10 {
+                                    tempQuestions.append(Question(multiplier: i, multiplicand: j))
+                                }
+                            }
+
+                            tempQuestions.shuffle()
+                            if self.questionAmount == 0 {
+                                self.questions = tempQuestions
+                            } else {
+                                self.questions = Array(tempQuestions.prefix(self.questionAmount))
+                            }
+                        }) {
+                            HStack {
+                                Text("Start".uppercased())
+                                    .font(.title)
+                                    .foregroundColor(Color(.systemOrange))
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                            .cornerRadius(40)
+                        }
+                    }
+                }
+                .navigationBarTitle(Text("Settings"))
+                .navigationBarItems(leading: EmptyView())
+            }
         }
 
     }
