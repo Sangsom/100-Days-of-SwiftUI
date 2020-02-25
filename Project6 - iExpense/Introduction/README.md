@@ -113,3 +113,24 @@ struct ContentView: View {
     }
 }
 ```
+
+## Storing settings with UserDefaults
+
+`UserData` allows us to store small amount of user data. Suggested is to store data that is no more than `512KB`in there.
+
+`UserData` is perfect for storing user settings that might track when the user last launched app, which news story they last read, or other passively collected information.
+
+In this example we are saving user tap count in `UserDefaults` and when app is launched tapCount is loaded from there too.
+
+```swift
+struct ContentView: View {
+    @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
+
+    var body: some View {
+        Button("Tap count: \(tapCount)") {
+            self.tapCount += 1
+            UserDefaults.standard.set(self.tapCount, forKey: "Tap")
+        }
+    }
+}
+```
