@@ -23,6 +23,10 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 
 ![RPS](https://media.giphy.com/media/dt610Pd1g3I1YNlVe6/giphy.gif)
 
+★ [Multiplication Trainer](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge3%20-%20Multiplication%20Trainer)
+
+![Multiplication Trainer](https://media.giphy.com/media/iFh10wll6cy17mfOoQ/giphy.gif)
+
 ## ❖ Projects
 
 ❖ [WeSplit](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project1%20-%20WeSplit)
