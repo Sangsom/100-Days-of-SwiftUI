@@ -36,7 +36,7 @@ struct ContentView: View {
             if gameStarted {
                 // Game Started
                 VStack {
-                    Text("Question \(currentQuestion + 1) of \(questions.count)")
+                    Text("Question \(currentQuestion + 1) of \(questions.count)").padding(.top)
                     Spacer()
                     HStack {
                         Text("What is \(questions[currentQuestion].multiplier) x \(questions[currentQuestion].multiplicand) = ")
@@ -53,7 +53,7 @@ struct ContentView: View {
                     Spacer()
                     Spacer()
                 }
-                .font(.title)
+                .font(.headline)
                 .navigationBarTitle(Text("Game Started"), displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
                     self.gameStarted.toggle()
@@ -107,13 +107,13 @@ struct ContentView: View {
                     }
                 }
                 .navigationBarTitle(Text("Settings"))
-                .navigationBarItems(leading: EmptyView())
+                .navigationBarItems(leading: EmptyView(), trailing: EmptyView())
             }
         }
         .alert(isPresented: $showingAlert) {
             Alert(
                 title: Text("Game Over"),
-                message: Text("You've scored \(score)"), dismissButton: .default(Text("OK"), action: {
+                message: Text("Congratulations, you scored \(score)"), dismissButton: .default(Text("OK"), action: {
                     self.score = 0
                     self.gameStarted = false
                 }))
