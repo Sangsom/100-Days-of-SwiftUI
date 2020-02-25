@@ -134,3 +134,30 @@ struct ContentView: View {
     }
 }
 ```
+
+## Archiving Swift objects with Codable
+
+We can archive custom type so we can put it into `UserDefaults`, then unarchive it when comes back out from `UserDefaults` with `Codable`.
+
+When we are working with a custom type that only has simple properties - strings, integers, Booleans, arrays of strings, and so on - the only thing we need to do to support archiving and unarchiving is to add a conformance to `Codable`.
+
+```swift
+struct User: Codable {
+    var firstName: String
+    var lastName: String
+}
+
+struct ContentView: View {
+    @State private var user = User(firstName: "Rinalds", lastName: "Domanovs")
+
+    var body: some View {
+        Button("Save User") {
+            let encoder = JSONEncoder()
+
+            if let data = try? encoder.encode(self.user) {
+                UserDefaults.standard.set(data, forKey: "UserData")
+            }
+        }
+    }
+}
+```
