@@ -52,12 +52,12 @@ struct ContentView: View {
                     Spacer()
                 }
                 .font(.title)
-                .navigationBarTitle(Text("Game Started"))
+                .navigationBarTitle(Text("Game Started"), displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
                     self.gameStarted.toggle()
                 }) {
                     Text("Back")
-                })
+                }, trailing: Text("Score: \(score)"))
             } else {
                 // Game Settings
                 Form {
