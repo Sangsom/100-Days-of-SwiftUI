@@ -60,6 +60,10 @@ struct ContentView: View {
                 }) {
                     Text("Back")
                 }, trailing: Text("Score: \(score)"))
+                .onAppear {
+                    self.score = 0
+                    self.currentQuestion = 0
+                }
             } else {
                 // Game Settings
                 Form {
