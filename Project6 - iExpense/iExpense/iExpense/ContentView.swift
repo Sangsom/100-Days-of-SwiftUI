@@ -32,7 +32,7 @@ struct ContentView: View {
             )
         }
         .sheet(isPresented: $showingAddExpenses) {
-            AddView()
+            AddView(expenses: self.expenses)
         }
     }
 
