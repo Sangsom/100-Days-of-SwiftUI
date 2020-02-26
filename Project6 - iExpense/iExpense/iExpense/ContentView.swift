@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var expenses = Expenses()
 
+    @State private var showingAddExpenses = false
+
     var body: some View {
         NavigationView {
             List {
@@ -28,6 +30,9 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
             )
+        }
+        .sheet(isPresented: $showingAddExpenses) {
+            AddView()
         }
     }
 
