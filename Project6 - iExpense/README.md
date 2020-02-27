@@ -4,6 +4,8 @@ This is an expense tracker app that separates personal costs from business costs
 
 ## Notes
 
+All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project6%20-%20iExpense/Introduction) folder.
+
 ## Challenges
 
 ✅Add an Edit/Done button to `ContentView` so users can delete rows more easily.  
