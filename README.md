@@ -45,6 +45,6 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 
 ![Word Scramble](https://media.giphy.com/media/ZXB0riw362FZCcjO0s/giphy.gif)
 
-❖ [iExpense](hhttps://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project6%20-%20iExpense)
+❖ [iExpense](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project6%20-%20iExpense)
 
 ![iExpense](https://media.giphy.com/media/dVp0RsJsisrfGhSg80/giphy.gif)
