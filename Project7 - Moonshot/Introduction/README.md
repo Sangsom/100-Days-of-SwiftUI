@@ -20,3 +20,23 @@ struct ContentView: View {
     }
 }
 ```
+
+## Data in ScrollView
+
+Here we create a vertical scroll view what shows a list of numbers from 0 to 100.
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        ScrollView(.vertical) {
+            VStack(spacing: 10) {
+                ForEach(0..<100) {
+                    Text("Item \($0)")
+                        .font(.title)
+                }
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+}
+```
