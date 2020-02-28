@@ -40,3 +40,7 @@ struct ContentView: View {
     }
 }
 ```
+
+## Pushing new views onto the stack using NavigationLink
+
+`NavigationView` shows for us navigation bar at the top of our views,and also it lets us push views onto a view stack.
