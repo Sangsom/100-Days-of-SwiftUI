@@ -43,6 +43,11 @@ struct MissionView: View {
                         .frame(maxWidth: geometry.size.width * 0.7)
                         .padding(.top)
 
+                    Text(self.mission.formattedLaunchDate)
+                        .font(.title)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.horizontal)
+
                     Text(self.mission.description)
                         .padding()
 
