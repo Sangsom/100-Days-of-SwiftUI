@@ -17,6 +17,22 @@ struct MissionView: View {
     let mission: Mission
     let astronauts: [CrewMember]
 
+    init(mission: Mission, astronauts: [Astronaut]) {
+        self.mission = mission
+
+        var matches = [CrewMember]()
+
+        for member in mission.crew {
+            if let match = astronauts.first(where: { $0.id == member.name }) {
+                matches.append(CrewMember(role: member.role, astronaut: match))
+            } else {
+                fatalError("Missing \(member)")
+            }
+        }
+
+        self.astronauts = matches
+    }
+
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical) {
