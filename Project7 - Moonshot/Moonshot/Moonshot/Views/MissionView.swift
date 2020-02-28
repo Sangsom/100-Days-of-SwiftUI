@@ -67,6 +67,7 @@ struct MissionView: View {
                             }
                             .padding(.horizontal)
                         }
+                        .buttonStyle(PlainButtonStyle())
                     }
 
                     Spacer(minLength: 25)
