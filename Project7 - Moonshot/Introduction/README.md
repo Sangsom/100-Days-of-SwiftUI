@@ -44,3 +44,14 @@ struct ContentView: View {
 ## Pushing new views onto the stack using NavigationLink
 
 `NavigationView` shows for us navigation bar at the top of our views,and also it lets us push views onto a view stack.
+
+```swift
+NavigationView {
+    List(0..<100) { row in
+        NavigationLink(destination: Text("Detail \(row)")) {
+            Text("Row \(row)")
+        }
+    }
+    .navigationBarTitle("SwiftUI")
+}
+```
