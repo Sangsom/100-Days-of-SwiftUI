@@ -9,7 +9,13 @@
 import SwiftUI
 
 struct MissionView: View {
+    struct CrewMember {
+        let role: String
+        let astronaut: Astronaut
+    }
+
     let mission: Mission
+    let astronauts: [CrewMember]
 
     var body: some View {
         GeometryReader { geometry in
@@ -33,7 +39,9 @@ struct MissionView: View {
 }
 
 struct MissionView_Previews: PreviewProvider {
+    static let missions: [Mission] = Bundle.main.decode("missions.json")
+
     static var previews: some View {
-        MissionView()
+        MissionView(mission: missions[0])
     }
 }
