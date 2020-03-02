@@ -37,8 +37,8 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Moonshot")
-            .navigationBarItems(trailing: Button(showingNames ? "Show Dates" : "Show Names") {
-                self.showingNames.toggle()
+            .navigationBarItems(trailing: Toggle(isOn: $showingNames) {
+                Text("Toggle \(showingNames ? "dates" : "astronauts")")
             })
         }
     }
