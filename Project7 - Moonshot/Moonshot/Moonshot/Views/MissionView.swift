@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MissionView: View {
+    @State private var descriptionOpacity = 0.0
+
     struct CrewMember {
         let role: String
         let astronaut: Astronaut
@@ -50,6 +52,8 @@ struct MissionView: View {
 
                     Text(self.mission.description)
                         .padding()
+                        .opacity(self.descriptionOpacity)
+                        .animation(Animation.easeIn)
 
                     Divider().padding()
 
@@ -82,6 +86,9 @@ struct MissionView: View {
             }
         }
         .navigationBarTitle(Text(mission.displayName), displayMode: .inline)
+        .onAppear {
+            self.descriptionOpacity = 1.0
+        }
     }
 }
 
