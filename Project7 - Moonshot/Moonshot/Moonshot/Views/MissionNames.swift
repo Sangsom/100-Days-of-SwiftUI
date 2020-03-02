@@ -28,9 +28,13 @@ struct MissionNames: View {
     }
 
     var body: some View {
-        ForEach(self.astronauts, id: \.id) {
-            Text("\($0.name)")
+        VStack(alignment: .leading) {
+            ForEach(self.astronauts, id: \.id) {
+                    Text("\($0.name)")
+            }
         }
+        .font(.subheadline)
+        .foregroundColor(Color(UIColor.systemGray))
     }
 }
 
