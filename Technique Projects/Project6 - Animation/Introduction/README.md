@@ -31,7 +31,7 @@ struct ContentView: View {
 
 This will make button scale up quickly and then bounce.
 
-```swift
+```swiftx§z§
 .animation(.interpolatingSpring(stiffness: 50, damping: 1))
 ```
 
