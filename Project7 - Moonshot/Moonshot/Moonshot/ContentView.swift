@@ -14,6 +14,12 @@ struct ContentView: View {
 
     @State private var showingNames = false
 
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemOrange,
+            .font : UIFont(name:"Rockwell", size: 40)!]
+    }
+
     var body: some View {
         NavigationView {
             List(missions) { mission in
@@ -26,12 +32,14 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
                             .font(.headline)
+                            .foregroundColor(Color(UIColor.systemOrange))
                         if self.showingNames {
                             VStack {
                                 MissionNames(mission: mission)
                             }
                         } else {
                             Text(mission.formattedLaunchDate)
+                                .foregroundColor(Color(UIColor.systemGray))
                         }
                     }
                 }
@@ -39,6 +47,7 @@ struct ContentView: View {
             .navigationBarTitle("Moonshot")
             .navigationBarItems(trailing: Toggle(isOn: $showingNames) {
                 Text("Toggle \(showingNames ? "dates" : "astronauts")")
+                    .foregroundColor(Color(UIColor.systemGray))
             })
         }
     }

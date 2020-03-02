@@ -43,14 +43,16 @@ struct AstronautView: View {
 
                     Group {
                         Text("Missions")
-                            .font(.headline)
+                            .font(.title)
 
-                        ForEach(self.missions, id: \.id) { mission in
-                            VStack(alignment: .leading) {
-                                Text(mission.displayName)
-                                Text(mission.formattedLaunchDate)
+                        VStack(spacing: 20) {
+                            ForEach(self.missions, id: \.id) { mission in
+                                VStack(alignment: .leading) {
+                                    Text(mission.displayName)
+                                    Text(mission.formattedLaunchDate)
+                                }
                             }
-                        }
+                        }.foregroundColor(Color(UIColor.systemGray))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
