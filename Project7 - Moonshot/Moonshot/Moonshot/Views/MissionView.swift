@@ -51,6 +51,8 @@ struct MissionView: View {
                     Text(self.mission.description)
                         .padding()
 
+                    Divider().padding()
+
                     ForEach(self.astronauts, id: \.role) { crewMember in
                         NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
                             HStack {

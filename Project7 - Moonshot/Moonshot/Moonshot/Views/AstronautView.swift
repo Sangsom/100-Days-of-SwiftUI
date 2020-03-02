@@ -41,6 +41,8 @@ struct AstronautView: View {
                         .padding()
                         .layoutPriority(1)
 
+                    Divider().padding(.horizontal)
+
                     Group {
                         Text("Missions")
                             .font(.title)
