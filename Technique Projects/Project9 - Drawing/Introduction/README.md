@@ -53,3 +53,38 @@ struct Triangle: Shape {
 ```
 
 ![Triangle Shape](https://i.imgur.com/DVpdDKlm.png)
+
+This creates an arc and it has adjusted rotation to start from top.
+
+```swift
+struct ContentView: View {
+    @State private var rotate: Double = 0
+
+    var body: some View {
+        Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
+            .stroke(Color.red, lineWidth: 10)
+            .frame(width: 300, height: 300)
+    }
+}
+
+struct Arc: Shape {
+    var startAngle: Angle
+    var endAngle: Angle
+    var clockwise: Bool
+
+    func path(in rect: CGRect) -> Path {
+        let rotationAdjustment = Angle.degrees(90)
+        let modifiedStart = startAngle - rotationAdjustment
+        let modifiedEnd = endAngle - rotationAdjustment
+
+        var path = Path()
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: clockwise)
+
+        return path
+    }
+
+
+}
+```
+
+![Imgur](https://i.imgur.com/CRfw3jGm.png)
