@@ -391,3 +391,7 @@ struct Checkerboard: Shape {
 ```
 
 ![Animated Checkboard](https://media.giphy.com/media/igbxX6V6ArFwNkYv1E/giphy.gif)
+
+## Spirograph
+
+![Spirograph](https://media.giphy.com/media/SvS6BQBOwql6zehzis/giphy.gif)
