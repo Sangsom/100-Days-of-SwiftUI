@@ -221,3 +221,34 @@ struct ColorCyclingCircle: View {
 ```
 
 ![drawingGroup Animation](https://media.giphy.com/media/QVbTycfRgK9cvEN174/giphy.gif)
+
+## Special effects in SwiftUI: blurs, blending, and more
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        ZStack {
+            Image("image")
+                .resizable()
+                .scaledToFit()
+
+            Rectangle()
+                .fill(Color.red)
+                .blendMode(.multiply)
+        }
+        .frame(width: 300, height: 200)
+        .clipped()
+    }
+}
+```
+
+This can be rewritten using `.colorMultiply` modifier.
+
+```swift
+Image("image")
+    .resizable()
+    .scaledToFit()
+    .colorMultiply(.red)
+```
+
+![Multiple Color Blending](https://i.imgur.com/YUCwBvZm.png)
