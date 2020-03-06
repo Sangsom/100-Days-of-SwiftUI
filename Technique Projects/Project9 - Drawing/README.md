@@ -43,4 +43,25 @@ struct Arrow: Shape {
 
 ✅Make the line thickness of your `Arrow` shape animatable.
 
+```swift
+struct ContentView: View {
+    @State private var thickness: CGFloat = 5
+
+    var body: some View {
+        VStack {
+            Arrow()
+                .stroke(Color.blue, style: StrokeStyle(lineWidth: thickness, lineCap: .round
+                    , lineJoin: .miter))
+                .frame(width: 300, height: 100)
+
+            Stepper("Arrow thickness: \(thickness, specifier: "%.0f")", value: $thickness.animation(.default), in: 1...10)
+                .padding(.horizontal)
+        }
+
+    }
+}
+```
+
+![Animated arrow shape thickness](https://media.giphy.com/media/Pidd2Hk958LoTQfK0v/giphy.gif)
+
 ✅Create a `ColorCyclingRectangle` shape that is the rectangular cousin of `ColorCyclingCircle`, allowing us to control the position of the gradient using a property.
