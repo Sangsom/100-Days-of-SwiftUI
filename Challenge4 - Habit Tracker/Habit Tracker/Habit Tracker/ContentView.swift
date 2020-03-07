@@ -8,9 +8,20 @@
 
 import SwiftUI
 
+struct Habit: Identifiable {
+    var id = UUID()
+    var activity: String
+    var description: String
+}
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            VStack {
+                Text("Gello")
+            }
+            .navigationBarTitle("Habit Tracker")
+        }
     }
 }
 
