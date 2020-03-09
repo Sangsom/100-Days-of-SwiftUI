@@ -9,8 +9,15 @@
 import SwiftUI
 
 struct AddHabitView: View {
+    @State private var activity: String = ""
+    @State private var description: String = ""
+
     var body: some View {
-        Text("Add new habit!")
+        Form {
+            TextField("Activity", text: $activity)
+
+            TextField("Description", text: $description)
+        }
     }
 }
 
