@@ -24,7 +24,7 @@ struct ContentView: View {
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddNewHabit.toggle()
             }) {
-                Image(systemName: "plus")
+                Image(systemName: "plus").padding()
             })
         }
         .sheet(isPresented: $showingAddNewHabit) {
