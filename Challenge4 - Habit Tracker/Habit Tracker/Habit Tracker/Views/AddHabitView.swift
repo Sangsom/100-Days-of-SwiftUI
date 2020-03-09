@@ -9,14 +9,28 @@
 import SwiftUI
 
 struct AddHabitView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var activity: String = ""
     @State private var description: String = ""
 
     var body: some View {
-        Form {
-            TextField("Activity", text: $activity)
+        NavigationView {
+            Form {
+                TextField("Activity", text: $activity)
 
-            TextField("Description", text: $description)
+                TextField("Description", text: $description)
+            }
+            .navigationBarTitle("Add activity", displayMode: .inline)
+            .navigationBarItems(leading: Button("Back") {
+                self.presentationMode.wrappedValue.dismiss()
+            }, trailing: Text("Add"))
+        }
+        .onAppear(perform: {
+            print(self.presentationMode)
+        })
+        .onDisappear {
+            print(self.presentationMode)
         }
     }
 }
