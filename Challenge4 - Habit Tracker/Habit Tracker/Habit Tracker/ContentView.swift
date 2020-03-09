@@ -28,7 +28,7 @@ struct ContentView: View {
             })
         }
         .sheet(isPresented: $showingAddNewHabit) {
-            AddHabitView()
+            AddHabitView(habitsController: self.habitsController)
         }
     }
 }
