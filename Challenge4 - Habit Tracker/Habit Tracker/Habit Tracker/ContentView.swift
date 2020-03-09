@@ -8,22 +8,9 @@
 
 import SwiftUI
 
-struct Habit: Identifiable {
-    var id = UUID()
-    var activity: String
-    var description: String
-}
-
-class HabitsController: ObservableObject {
-    @Published var habits: [Habit]
-
-    init() {
-        let items = [Habit(activity: "Running", description: "Just 3km"), Habit(activity: "Read a tutorial", description: "Something about SwiftUI")]
-        self.habits = items
-    }
-}
-
 struct ContentView: View {
+    @State private var showingAddNewHabit = false
+
     var habitsController = HabitsController()
 
     var body: some View {
@@ -34,6 +21,14 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Habit Tracker")
+            .navigationBarItems(trailing: Button(action: {
+                self.showingAddNewHabit.toggle()
+            }) {
+                Image(systemName: "plus")
+            })
+        }
+        .sheet(isPresented: $showingAddNewHabit) {
+            Text("This is add new habit form")
         }
     }
 }
