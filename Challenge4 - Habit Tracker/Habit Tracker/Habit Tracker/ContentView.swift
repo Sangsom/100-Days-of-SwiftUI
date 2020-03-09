@@ -28,7 +28,7 @@ struct ContentView: View {
             })
         }
         .sheet(isPresented: $showingAddNewHabit) {
-            Text("This is add new habit form")
+            AddHabitView()
         }
     }
 }
