@@ -9,23 +9,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+
     @State private var showingAddNewHabit = false
 
     var habitsController = HabitsController()
+
+    var shadowColor: Color {
+        if colorScheme == .dark {
+            return Color(UIColor.white)
+        } else {
+            return Color(UIColor.black)
+        }
+    }
 
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: true, content: {
                 VStack(spacing: 5) {
-                    ForEach(habitsController.habits) {
-                        Text("\($0.activity)")
-                            .frame(maxWidth: .infinity)
-                            .background(
-                                Color(UIColor.systemGreen)
-                                .frame(height: 44)
-                                .cornerRadius(10)
-                            )
-                            .padding()
+                    ForEach(habitsController.habits) { habit in
+                        NavigationLink(destination: Text("Hello")) {
+                            Text("\(habit.activity)")
+                                .frame(maxWidth: .infinity)
+                                .background(
+                                    Color(UIColor.systemGreen)
+                                    .frame(height: 44)
+                                    .cornerRadius(10)
+                                    .shadow(color: self.shadowColor, radius: 3, x: 0, y: 0)
+                                )
+                                .padding()
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
             })
