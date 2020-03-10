@@ -15,11 +15,20 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                ForEach(habitsController.habits) {
-                    Text("\($0.activity)")
+            ScrollView(.vertical, showsIndicators: true, content: {
+                VStack(spacing: 5) {
+                    ForEach(habitsController.habits) {
+                        Text("\($0.activity)")
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                Color(UIColor.systemGreen)
+                                .frame(height: 44)
+                                .cornerRadius(10)
+                            )
+                            .padding()
+                    }
                 }
-            }
+            })
             .navigationBarTitle("Habit Tracker")
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddNewHabit.toggle()
@@ -40,6 +49,8 @@ struct ContentView_Previews: PreviewProvider {
     static var habits = HabitsController()
 
     static var previews: some View {
-        ContentView()
+//        habits.habits.append(Habit(activity: "Running", description: "I love to run a lot"))
+//        habits.habits.append(Habit(activity: "Read a tutorial", description: "Something about SwiftUI"))
+        return ContentView()
     }
 }
