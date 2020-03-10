@@ -12,12 +12,28 @@ struct HabitDetailView: View {
     var habit: Habit!
 
     var body: some View {
-        Text(habit.activity)
+        VStack {
+            Text(habit.activity)
+                .font(.title)
+                .padding()
+            Text(habit.description)
+                .font(.body)
+                .padding([.bottom, .horizontal])
+        }
+        .frame(maxWidth: .infinity)
+        .background(
+            Color(UIColor.systemGreen)
+                .cornerRadius(20)
+                .shadow(radius: 5)
+        )
+        .padding()
     }
 }
 
 struct HabitDetailView_Previews: PreviewProvider {
+    static var habit = Habit(activity: "Running", description: "I love to run a lot I love to run a lot I love to run a lot I love to run a lot I love to run a lot I love to run a lot ")
+
     static var previews: some View {
-        HabitDetailView()
+        HabitDetailView(habit: habit)
     }
 }
