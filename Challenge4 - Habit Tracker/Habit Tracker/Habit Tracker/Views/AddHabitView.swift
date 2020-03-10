@@ -42,12 +42,6 @@ struct AddHabitView: View {
                 }.disabled(!isValid)
             )
         }
-        .onAppear(perform: {
-            print(self.presentationMode.wrappedValue.isPresented)
-        })
-        .onDisappear {
-            print(self.presentationMode.wrappedValue.isPresented)
-        }
     }
 }
 

@@ -24,7 +24,10 @@ struct ContentView: View {
             .navigationBarItems(trailing: Button(action: {
                 self.showingAddNewHabit.toggle()
             }) {
-                Image(systemName: "plus").padding()
+                Image(systemName: "plus")
+                    .foregroundColor(Color(UIColor.systemOrange))
+                    .font(.title)
+                    .padding()
             })
         }
         .sheet(isPresented: $showingAddNewHabit) {
