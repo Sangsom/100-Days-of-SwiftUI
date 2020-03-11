@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var showingAddNewHabit = false
 
-    var habitsController = HabitsController()
+    @ObservedObject var habitsController = HabitsController()
 
     var body: some View {
         NavigationView {

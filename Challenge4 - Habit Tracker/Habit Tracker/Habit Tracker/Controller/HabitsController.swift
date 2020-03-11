@@ -9,9 +9,10 @@
 import Foundation
 
 struct Habit: Identifiable, Codable {
-    var id = UUID()
-    var activity: String
-    var description: String
+    let id = UUID()
+    let activity: String
+    let description: String
+    var timesCompleted: Int = 0
 }
 
 class HabitsController: ObservableObject {
