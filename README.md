@@ -28,6 +28,10 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 
 ![Multiplication Trainer](https://media.giphy.com/media/iFh10wll6cy17mfOoQ/giphy.gif)
 
+★ [Habit Tracker](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge4%20-%20Habit%20Tracker)
+
+![Habit Tracker](https://media.giphy.com/media/gLjEco31oVBKw5kcG4/giphy.gif)
+
 ## ❖ Projects
 
 ❖ [WeSplit](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project1%20-%20WeSplit)
