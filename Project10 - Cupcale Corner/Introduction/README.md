@@ -89,3 +89,34 @@ struct ContentView: View {
     }
 }
 ```
+
+## Validating and disabling forms
+
+This disables form button unless both username and email are validated and true
+
+```swift
+struct ContentView: View {
+    @State private var username = ""
+    @State private var email = ""
+
+    var disabledForm: Bool {
+        username.count < 5 || email.count < 5
+    }
+
+    var body: some View {
+        Form {
+            Section {
+                TextField("Username", text: $username)
+                TextField("Email", text: $email)
+            }
+
+            Section {
+                Button("Create account") {
+                    print("Creating account...")
+                }
+            }
+            .disabled(disabledForm)
+        }
+    }
+}
+```
