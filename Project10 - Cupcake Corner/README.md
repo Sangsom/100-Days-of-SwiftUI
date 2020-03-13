@@ -4,7 +4,7 @@ This app allows to make an custom Cupcake and order it.
 
 ## Notes
 
-All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project10%20-%20Cupcale%20Corner/Introduction) folder.
+All notes about techniques used are in [Introduction](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project10%20-%20Cupcake%20Corner/Introduction) folder.
 
 ## Challenges
 
