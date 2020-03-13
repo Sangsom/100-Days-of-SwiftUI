@@ -57,3 +57,7 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 ❖ [Moonshot](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project7%20-%20Moonshot)
 
 ![Moonshot](https://media.giphy.com/media/ckHZCM76uNkqIQ5WfJ/giphy.gif)
+
+❖ [Cupcake Corner](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project10%20-%20Cupcake%20Corner)
+
+![Cupcake Corner](https://media.giphy.com/media/RhYQUrGyemMA3wfh8q/giphy.gif)
