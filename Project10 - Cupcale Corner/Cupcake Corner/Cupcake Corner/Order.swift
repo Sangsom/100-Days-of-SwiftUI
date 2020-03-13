@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class Order: ObservableObject: Codable {
+class Order: ObservableObject, Codable {
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
 
     @Published var type = 0
@@ -58,6 +58,8 @@ class Order: ObservableObject: Codable {
         return cost
     }
 
+
+
     // MARK: - Codable
     enum CodingKeys: CodingKey {
         case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
@@ -77,4 +79,21 @@ class Order: ObservableObject: Codable {
         try container.encode(city, forKey: .city)
         try container.encode(zip, forKey: .zip)
     }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        type = try container.decode(Int.self, forKey: .type)
+        quantity = try container.decode(Int.self, forKey: .quantity)
+
+        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
+        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
+
+        name = try container.decode(String.self, forKey: .name)
+        streetAddress = try container.decode(String.self, forKey: .streetAddress)
+        city = try container.decode(String.self, forKey: .city)
+        zip = try container.decode(String.self, forKey: .zip)
+    }
+
+    init() { }
 }
