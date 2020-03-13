@@ -63,5 +63,18 @@ class Order: ObservableObject: Codable {
         case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
     }
 
-    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(type, forKey: .type)
+        try container.encode(quantity, forKey: .quantity)
+
+        try container.encode(extraFrosting, forKey: .extraFrosting)
+        try container.encode(addSprinkles, forKey: .addSprinkles)
+
+        try container.encode(name, forKey: .name)
+        try container.encode(streetAddress, forKey: .streetAddress)
+        try container.encode(city, forKey: .city)
+        try container.encode(zip, forKey: .zip)
+    }
 }
