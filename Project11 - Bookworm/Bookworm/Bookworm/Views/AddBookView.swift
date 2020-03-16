@@ -45,7 +45,14 @@ struct AddBookView: View {
 
                 Section {
                     Button("Save") {
+                        let newBook = Book(context: self.moc)
+                        newBook.title = self.title
+                        newBook.author = self.author
+                        newBook.rating = Int16(self.rating)
+                        newBook.genre = self.genre
+                        newBook.review = self.review
 
+                        try? self.moc.save()
                     }
                 }
             }
