@@ -33,6 +33,7 @@ struct ContentView: View {
                         }
                     }
                 }
+            .onDelete(perform: deleteBooks)
             }
                 .navigationBarTitle("Bookworm")
                 .navigationBarItems(trailing: Button(action: {
@@ -46,6 +47,19 @@ struct ContentView: View {
                     AddBookView().environment(\.managedObjectContext, self.moc)
             }
         }
+    }
+
+    func deleteBooks(at offsets: IndexSet) {
+        for offset in offsets {
+            // find this book in our fetch request
+            let book = books[offset]
+
+            // delete it from the context
+            moc.delete(book)
+        }
+
+        // save the context
+        try? moc.save()
     }
 }
 
