@@ -13,7 +13,24 @@ struct DetailView: View {
     let book: Book
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    Image(self.book.genre ?? "Fantasy")
+                        .frame(maxWidth: geometry.size.width)
+
+                    Text(self.book.genre?.uppercased() ?? "FANTASY")
+                        .font(.caption)
+                        .fontWeight(.black)
+                        .padding(8)
+                        .foregroundColor(.white)
+                        .background(Color.black.opacity(0.75))
+                        .clipShape(Capsule())
+                        .offset(x: -5, y: -5)
+                }
+            }
+        }
+        .navigationBarTitle(Text(book.title ?? "Unknown Book"), displayMode: .inline)
     }
 }
 
