@@ -39,3 +39,31 @@ struct PushButton: View {
 ```
 
 ![Binding usage](https://media.giphy.com/media/IbkflevgKCUeiupyGE/giphy.gif)
+
+## Using size classes with AnyView type erasure
+
+Size classes are Apple's way of telling us how much space we have for our views.
+
+It allows to return different view depending on sizeClass.
+
+```swift
+struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
+
+    var body: some View {
+        if sizeClass == .compact {
+            return AnyView(VStack {
+                Text("Active size class:")
+                Text("COMPACT")
+            }
+            .font(.largeTitle))
+        } else {
+            return AnyView(HStack {
+                Text("Active size class:")
+                Text("REGULAR")
+            }
+            .font(.largeTitle))
+        }
+    }
+}
+```
