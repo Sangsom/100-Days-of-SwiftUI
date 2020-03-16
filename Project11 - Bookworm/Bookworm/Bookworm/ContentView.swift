@@ -22,7 +22,9 @@ struct ContentView: View {
                     self.showingAddScreen.toggle()
                 }) {
                     Image(systemName: "plus")
+                    .padding()
                 })
+
                 .sheet(isPresented: $showingAddScreen) {
                     AddBookView().environment(\.managedObjectContext, self.moc)
             }
