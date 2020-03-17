@@ -32,10 +32,12 @@ struct ContentView: View {
             }
 
             Button("Save") {
-                do {
-                    try self.moc.save()
-                } catch {
-                    print(error.localizedDescription)
+                if self.moc.hasChanges {
+                    do {
+                        try self.moc.save()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             }
         }
