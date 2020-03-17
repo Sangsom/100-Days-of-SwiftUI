@@ -18,6 +18,13 @@ struct AddBookView: View {
     @State private var genre = ""
     @State private var review = ""
 
+    var isValidForm: Bool {
+        if title.isEmpty || genre.isEmpty {
+            return false
+        }
+        return true
+    }
+
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
 
     var body: some View {
@@ -53,6 +60,7 @@ struct AddBookView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }
+            .disabled(!isValidForm)
             }
             .navigationBarTitle("Add Book")
         }
