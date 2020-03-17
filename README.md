@@ -61,3 +61,7 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 ❖ [Cupcake Corner](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project10%20-%20Cupcake%20Corner)
 
 ![Cupcake Corner](https://media.giphy.com/media/RhYQUrGyemMA3wfh8q/giphy.gif)
+
+❖ [Bookworm](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project11%20-%20Bookworm)
+
+![Bookworm](https://media.giphy.com/media/Ti0bLxqG6a5HByymGG/giphy.gif)
