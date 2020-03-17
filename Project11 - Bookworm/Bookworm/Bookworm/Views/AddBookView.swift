@@ -49,6 +49,7 @@ struct AddBookView: View {
                 Section {
                     Button("Save") {
                         let newBook = Book(context: self.moc)
+                        newBook.date = Date()
                         newBook.title = self.title
                         newBook.author = self.author
                         newBook.rating = Int16(self.rating)

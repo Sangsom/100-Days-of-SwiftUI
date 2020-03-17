@@ -33,6 +33,8 @@ struct DetailView: View {
                         .offset(x: -5, y: -5)
                 }
 
+                Text(self.book.date?.printFormattedDate() ?? "Unknown date")
+
                 Text(self.book.author ?? "Unknown author")
                     .font(.title)
                     .foregroundColor(.secondary)
