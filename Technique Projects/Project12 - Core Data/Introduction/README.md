@@ -52,3 +52,7 @@ context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 ```
 
 ![Core Data unique constraints](https://media.giphy.com/media/QYjuS9wkgwZKQ5G57q/giphy.gif)
+
+## Filtering @FetchRequest using NSPredicate
+
+When we use `@FetchRequest` property wrapper, we can provide an array of sort descriptors to control ordering of results, but we can also provide an `NSPredicate` to control which results should be shown.
