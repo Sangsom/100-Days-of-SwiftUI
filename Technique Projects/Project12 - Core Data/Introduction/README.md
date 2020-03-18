@@ -167,3 +167,5 @@ struct FilteredList: View {
 ```
 
 ![Dynamically filter core data](https://media.giphy.com/media/RJ16PpBupsgAN9tBXK/giphy.gif)
+
+## One-to-many relationships with Core Data
