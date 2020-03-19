@@ -64,3 +64,8 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     }
 }
 ```
+
+## Codable Keys
+
+Sometimes we would need to translate incoming `JSON` property names that are written in snake case `first_name` to camelCase `firstName`.
+Codable is able to translate between these two as long as it knows what to expect - we need to set a property on our decoder called `keyDecodingStrategy`.
