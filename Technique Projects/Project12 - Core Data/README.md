@@ -69,3 +69,58 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
 
 Sometimes we would need to translate incoming `JSON` property names that are written in snake case `first_name` to camelCase `firstName`.
 Codable is able to translate between these two as long as it knows what to expect - we need to set a property on our decoder called `keyDecodingStrategy`.
+
+```swift
+struct User: Codable {
+    var firstName: String
+    var lastName: String
+}
+```
+
+```swift
+let str = """
+{
+    "first_name": "Andrew",
+    "last_name": "Glouberman"
+}
+"""
+
+let data = Data(str.utf8)
+```
+
+Decoding;
+
+```swift
+do {
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+    let user = try decoder.decode(User.self, from: data)
+    print("Hi, I'm \(user.firstName) \(user.lastName)")
+} catch {
+    print("Whoops: \(error.localizedDescription)")
+} 
+```
+
+There may be also cases when our data is named totally different as we need, and we need to re-name them:
+
+```swift
+let str = """
+{
+    "first": "Andrew",
+    "last": "Glouberman"
+}
+"""
+```
+
+```swift
+struct User: Codable {
+    enum CodingKeys: String, CodingKey {
+        case firstName = "first"
+        case lastName = "last"
+    }
+
+    var firstName: String
+    var lastName: String
+}
+```
