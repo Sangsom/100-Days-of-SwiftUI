@@ -14,12 +14,13 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(users) { user in
-                Text("\(user.name)")
+                NavigationLink(destination: Text("Link")) {
+                    Text("\(user.name)")
+                }
             }
             .navigationBarTitle(Text("Friend Face"))
         }
         .onAppear(perform: loadData)
-
     }
 
     func loadData() {
