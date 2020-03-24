@@ -8,13 +8,21 @@
 
 import SwiftUI
 
+struct UserView: View {
+    var user: User
+
+    var body: some View {
+        Text(user.about)
+    }
+}
+
 struct ContentView: View {
     @State private var users = [User]()
 
     var body: some View {
         NavigationView {
             List(users) { user in
-                NavigationLink(destination: Text("Link")) {
+                NavigationLink(destination: UserView(user: user)) {
                     Text("\(user.name)")
                 }
             }
