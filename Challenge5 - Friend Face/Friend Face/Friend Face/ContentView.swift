@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct User: Codable {
+struct User: Codable, Identifiable {
     var id: String
     var isActive: Bool
     var name: String
@@ -32,7 +32,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List(users, id: \.self.id) { user in
+            List(users) { user in
                 Text("\(user.name)")
             }
         }
