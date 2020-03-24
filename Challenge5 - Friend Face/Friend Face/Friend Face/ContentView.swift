@@ -12,7 +12,13 @@ struct UserView: View {
     var user: User
 
     var body: some View {
-        Text(user.about)
+        VStack {
+            Image("person")
+                .resizable()
+                .frame(width: 100, height: 100)
+                .background(Color.black.opacity(0.4))
+                .clipShape(Circle())
+        }
     }
 }
 
