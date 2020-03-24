@@ -35,8 +35,10 @@ struct ContentView: View {
             List(users) { user in
                 Text("\(user.name)")
             }
+            .navigationBarTitle(Text("Friend Face"))
         }
         .onAppear(perform: loadData)
+
     }
 
     func loadData() {
