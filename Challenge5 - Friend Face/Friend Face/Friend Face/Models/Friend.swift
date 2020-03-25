@@ -6,7 +6,7 @@
 //  Copyright © 2020 Rinalds Domanovs. All rights reserved.
 //
 
-struct Friend: Codable {
+struct Friend: Codable, Identifiable {
     var id: String
     var name: String
 }

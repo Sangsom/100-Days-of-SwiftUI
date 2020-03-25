@@ -25,7 +25,6 @@ struct UserView: View {
                     Text(user.company)
                 }
 
-
                 Spacer()
             }.padding(.bottom)
 
@@ -43,6 +42,25 @@ struct UserView: View {
                 .font(.title)
 
             Text(user.about)
+
+            Text("Friends")
+                .font(.title)
+
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack(spacing: 20) {
+                    ForEach(user.friends) { friend in
+                        Text(friend.name)
+                            .frame(width: 120, height: 120, alignment: .bottomLeading)
+                            .background(
+                                Color.green
+                                    .cornerRadius(10)
+                                    .shadow(radius: 5)
+                            )
+
+                    }
+                }
+
+            }
             
             Spacer()
         }
