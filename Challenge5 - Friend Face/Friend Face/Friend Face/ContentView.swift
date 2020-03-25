@@ -21,7 +21,7 @@ struct UserView: View {
                     .clipShape(Circle())
 
                 VStack(alignment: .leading) {
-                    Text(user.name)
+                    Text("\(user.name), \(user.age)")
                     Text(user.company)
                 }
 
