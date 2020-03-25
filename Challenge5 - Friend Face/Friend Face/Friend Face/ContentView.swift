@@ -12,13 +12,36 @@ struct UserView: View {
     var user: User
 
     var body: some View {
-        VStack {
-            Image("person")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .background(Color.black.opacity(0.4))
-                .clipShape(Circle())
+        VStack(alignment: .leading) {
+            HStack {
+                Image("person")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .background(Color.black.opacity(0.4))
+                    .clipShape(Circle())
+
+                VStack(alignment: .leading) {
+                    Text(user.name)
+                    Text(user.company)
+                }
+
+
+                Spacer()
+            }.padding(.bottom)
+
+            HStack {
+                Image(systemName: "envelope").frame(width: 40)
+                Text(user.email)
+            }
+
+            HStack {
+                Image(systemName: "mappin").frame(width: 40)
+                Text(user.address)
+            }
+            
+            Spacer()
         }
+        .padding()
     }
 }
 
