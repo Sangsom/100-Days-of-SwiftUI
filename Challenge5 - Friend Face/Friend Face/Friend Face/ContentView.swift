@@ -38,6 +38,11 @@ struct UserView: View {
                 Image(systemName: "mappin").frame(width: 40)
                 Text(user.address)
             }
+
+            Text("About Me")
+                .font(.title)
+
+            Text(user.about)
             
             Spacer()
         }
