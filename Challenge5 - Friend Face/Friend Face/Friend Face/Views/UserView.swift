@@ -10,10 +10,12 @@ import SwiftUI
 
 struct UserView: View {
     @Environment(\.colorScheme) var colorScheme
+
     @State private var showingFriend = false
     @State private var selectedFriend: Friend?
 
     var user: User
+    var usersController: UserController
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -63,7 +65,7 @@ struct UserView: View {
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack(spacing: 20) {
                     ForEach(user.friends) { friend in
-                        NavigationLink(destination: FriendView(friend: friend)) {
+                        NavigationLink(destination: FriendView(friend: friend, usersController: self.usersController)) {
                             VStack {
                                 Image("person")
                                     .resizable()
@@ -80,12 +82,15 @@ struct UserView: View {
         }
         .padding()
         .foregroundColor(.secondary)
+        .onAppear {
+            self.usersController.selectedUser = self.user
+        }
     }
 }
 struct UserView_Previews: PreviewProvider {
     static let user = User(id: "1", isActive: true, name: "Rinalds Domanovs", age: 31, company: "Apple", email: "rinalds.domanovs@gmail.com", address: "Mazcenu Aleja 20C-9", about: "Self-thaught iOS Developer", registered: "05.03.2020", tags: ["ios", "swift"], friends: [Friend(id: "5", name: "Ivars Kims"), Friend(id: "9", name: "Teodors Domanovs")])
     static var previews: some View {
-        UserView(user: user)
+        UserView(user: user, usersController: UserController())
     }
 }
 

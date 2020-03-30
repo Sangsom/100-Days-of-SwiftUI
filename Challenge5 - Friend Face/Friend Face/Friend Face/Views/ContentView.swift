@@ -10,6 +10,7 @@ import SwiftUI
 
 class UserController: ObservableObject {
     @Published var users = [User]()
+    @Published var selectedUser: User?
 }
 
 struct ContentView: View {
@@ -25,7 +26,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(usersController.users) { user in
-                NavigationLink(destination: UserView(user: user)) {
+                NavigationLink(destination: UserView(user: user, usersController: self.usersController)) {
                     HStack {
                         Image("person")
                         .resizable()
