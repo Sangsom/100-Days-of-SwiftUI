@@ -8,19 +8,6 @@
 
 import SwiftUI
 
-struct FriendView: View {
-    @State private var user: User?
-    var friend: Friend
-
-    init(friend: Friend) {
-        self.friend = friend
-    }
-
-    var body: some View {
-        Text(friend.name)
-    }
-}
-
 struct ContentView: View {
     @State private var users = [User]()
 
