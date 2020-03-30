@@ -26,7 +26,9 @@ struct ContentView: View {
                         Image("person")
                         .resizable()
                         .frame(width: 40, height: 40)
-                            .background(self.colorScheme == .dark ? Color.green.opacity(0.4) : Color.black.opacity(0.4))
+                        .background(self.colorScheme == .dark ?
+                            Color.green.opacity(0.4) :
+                            Color.black.opacity(0.4))
                         .clipShape(Circle())
 
                         VStack(alignment: .leading) {

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct UserView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var showingFriend = false
     @State private var selectedFriend: Friend?
 
@@ -20,7 +21,7 @@ struct UserView: View {
                 Image("person")
                     .resizable()
                     .frame(width: 80, height: 80)
-                    .background(Color.black.opacity(0.4))
+                    .background(self.colorScheme == .dark ? Color.green.opacity(0.4) : Color.black.opacity(0.4))
                     .clipShape(Circle())
 
                 VStack(alignment: .leading) {
@@ -67,7 +68,7 @@ struct UserView: View {
                                 Image("person")
                                     .resizable()
                                     .frame(width: 80, height: 80)
-                                    .background(Color.black.opacity(0.4))
+                                    .background(self.colorScheme == .dark ? Color.green.opacity(0.4) : Color.black.opacity(0.4))
                                     .clipShape(Circle())
                                 Text(friend.name)
                             }.frame(width: 120, height: 120)
