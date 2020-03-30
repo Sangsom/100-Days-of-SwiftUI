@@ -28,6 +28,8 @@ struct UserView: View {
                         .font(.title)
                         .foregroundColor(.primaryOrange)
                     Text(user.company)
+                    Text(user.isActive ? "Active" : "Inactive")
+                        .foregroundColor(user.isActive ? Color.green : Color.red)
                 }
 
                 Spacer()
