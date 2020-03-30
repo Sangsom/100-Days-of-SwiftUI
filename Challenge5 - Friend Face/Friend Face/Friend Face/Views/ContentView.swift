@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var users = [User]()
 
     init() {
@@ -21,7 +22,20 @@ struct ContentView: View {
         NavigationView {
             List(users) { user in
                 NavigationLink(destination: UserView(user: user)) {
-                    Text("\(user.name)")
+                    HStack {
+                        Image("person")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                            .background(self.colorScheme == .dark ? Color.green.opacity(0.4) : Color.black.opacity(0.4))
+                        .clipShape(Circle())
+
+                        VStack(alignment: .leading) {
+                            Text("\(user.name)")
+                                .foregroundColor(.secondary)
+                            Text("\(user.age)")
+                                .foregroundColor(.primaryOrange).opacity(0.8)
+                        }
+                    }
                 }
             }
             .navigationBarTitle(Text("Friend Face"))
