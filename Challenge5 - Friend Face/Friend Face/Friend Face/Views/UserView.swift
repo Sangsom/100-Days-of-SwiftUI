@@ -25,6 +25,8 @@ struct UserView: View {
 
                 VStack(alignment: .leading) {
                     Text("\(user.name), \(user.age)")
+                        .font(.title)
+                        .foregroundColor(.primaryOrange)
                     Text(user.company)
                 }
 
@@ -33,21 +35,27 @@ struct UserView: View {
 
             HStack {
                 Image(systemName: "envelope").frame(width: 40)
+                    .foregroundColor(.primaryOrange)
                 Text(user.email)
             }
 
             HStack {
                 Image(systemName: "mappin").frame(width: 40)
+                    .foregroundColor(.primaryOrange)
                 Text(user.address)
+
             }
 
             Text("About Me")
                 .font(.title)
+                .foregroundColor(.primaryOrange)
+
 
             Text(user.about)
 
             Text("Friends")
                 .font(.title)
+                .foregroundColor(.primaryOrange)
 
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack(spacing: 20) {
@@ -65,8 +73,10 @@ struct UserView: View {
                     }
                 }
             }
+            Spacer()
         }
         .padding()
+        .foregroundColor(.secondary)
     }
 }
 struct UserView_Previews: PreviewProvider {
@@ -74,4 +84,8 @@ struct UserView_Previews: PreviewProvider {
     static var previews: some View {
         UserView(user: user)
     }
+}
+
+extension Color {
+    static let primaryOrange = Color(UIColor.systemOrange)
 }
