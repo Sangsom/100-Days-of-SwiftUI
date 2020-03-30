@@ -33,6 +33,10 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 
 ![Habit Tracker](https://media.giphy.com/media/gLjEco31oVBKw5kcG4/giphy.gif)
 
+★ [Friend Face](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Challenge5%20-%20Friend%20Face)
+
+![Friend Face](https://media.giphy.com/media/cOEOi1krIfRRl5pSPB/giphy.gif)
+
 ## ❖ Projects
 
 ❖ [WeSplit](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project1%20-%20WeSplit)
