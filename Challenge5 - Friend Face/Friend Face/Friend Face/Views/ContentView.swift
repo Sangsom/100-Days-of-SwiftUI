@@ -11,6 +11,12 @@ import SwiftUI
 struct ContentView: View {
     @State private var users = [User]()
 
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemOrange
+        ]
+    }
+
     var body: some View {
         NavigationView {
             List(users) { user in
