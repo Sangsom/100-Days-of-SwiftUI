@@ -8,63 +8,16 @@
 
 import SwiftUI
 
-struct UserView: View {
-    var user: User
+struct FriendView: View {
+    @State private var user: User?
+    var friend: Friend
+
+    init(friend: Friend) {
+        self.friend = friend
+    }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image("person")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .background(Color.black.opacity(0.4))
-                    .clipShape(Circle())
-
-                VStack(alignment: .leading) {
-                    Text("\(user.name), \(user.age)")
-                    Text(user.company)
-                }
-
-                Spacer()
-            }.padding(.bottom)
-
-            HStack {
-                Image(systemName: "envelope").frame(width: 40)
-                Text(user.email)
-            }
-
-            HStack {
-                Image(systemName: "mappin").frame(width: 40)
-                Text(user.address)
-            }
-
-            Text("About Me")
-                .font(.title)
-
-            Text(user.about)
-
-            Text("Friends")
-                .font(.title)
-
-            ScrollView(.horizontal, showsIndicators: true) {
-                HStack(spacing: 20) {
-                    ForEach(user.friends) { friend in
-                        Text(friend.name)
-                            .frame(width: 120, height: 120, alignment: .bottomLeading)
-                            .background(
-                                Color.green
-                                    .cornerRadius(10)
-                                    .shadow(radius: 5)
-                            )
-
-                    }
-                }
-
-            }
-            
-            Spacer()
-        }
-        .padding()
+        Text(friend.name)
     }
 }
 
@@ -95,7 +48,8 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
                 if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-
+                    // Find particular friend
+                    print(decodedResponse.first(where: { $0.name == "Russo Carlson"})!)
                     DispatchQueue.main.async {
                         self.users = decodedResponse
                     }
