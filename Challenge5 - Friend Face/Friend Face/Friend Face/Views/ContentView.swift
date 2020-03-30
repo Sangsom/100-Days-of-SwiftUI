@@ -8,9 +8,13 @@
 
 import SwiftUI
 
+class UserController: ObservableObject {
+    @Published var users = [User]()
+}
+
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var users = [User]()
+    @ObservedObject var usersController = UserController()
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -20,7 +24,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List(users) { user in
+            List(usersController.users) { user in
                 NavigationLink(destination: UserView(user: user)) {
                     HStack {
                         Image("person")
@@ -60,7 +64,7 @@ struct ContentView: View {
                     // Find particular friend
                     print(decodedResponse.first(where: { $0.name == "Russo Carlson"})!)
                     DispatchQueue.main.async {
-                        self.users = decodedResponse
+                        self.usersController.users = decodedResponse
                     }
                 }
 
