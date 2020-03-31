@@ -12,16 +12,6 @@ struct FriendView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var friend: Friend
-    var usersController: UserController
-
-    var selectedFriend: User {
-        return usersController.users.first(where: { $0.id == friend.id})!
-    }
-
-    init(friend: Friend, usersController: UserController) {
-        self.friend = friend
-        self.usersController = usersController
-    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,12 +23,12 @@ struct FriendView: View {
                     .clipShape(Circle())
 
                 VStack(alignment: .leading) {
-                    Text("\(selectedFriend.name), \(selectedFriend.age)")
+                    Text("Mame, 33")
                         .font(.title)
                         .foregroundColor(.primaryOrange)
-                    Text(selectedFriend.company)
-                    Text(selectedFriend.isActive ? "Active" : "Inactive")
-                        .foregroundColor(selectedFriend.isActive ? Color.green : Color.red)
+                    Text("Company")
+                    Text(true ? "Active" : "Inactive")
+                        .foregroundColor(true ? Color.green : Color.red)
                 }
 
                 Spacer()
@@ -47,13 +37,13 @@ struct FriendView: View {
             HStack {
                 Image(systemName: "envelope").frame(width: 40)
                     .foregroundColor(.primaryOrange)
-                Text(selectedFriend.email)
+                Text("Email")
             }
 
             HStack {
                 Image(systemName: "mappin").frame(width: 40)
                     .foregroundColor(.primaryOrange)
-                Text(selectedFriend.address)
+                Text("Address")
 
             }
 
@@ -62,7 +52,7 @@ struct FriendView: View {
                 .foregroundColor(.primaryOrange)
 
 
-            Text(selectedFriend.about)
+            Text("About")
 
             Spacer()
         }
@@ -72,9 +62,7 @@ struct FriendView: View {
 }
 
 struct FriendView_Previews: PreviewProvider {
-    static let friend = Friend(id: "02460e65-d28c-4389-87d0-b61a74140922", name: "Berg Donovan")
-
     static var previews: some View {
-        FriendView(friend: friend, usersController: UserController())
+        FriendView(friend: Friend())
     }
 }

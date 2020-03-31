@@ -7,15 +7,13 @@
 //
 
 import SwiftUI
-
-class UserController: ObservableObject {
-    @Published var users = [User]()
-    @Published var selectedUser: User?
-}
+import CoreData
 
 struct ContentView: View {
+    @FetchRequest(entity: User.entity(), sortDescriptors: []) var users: FetchedResults<User>
+    @Environment(\.managedObjectContext) var moc
+
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var usersController = UserController()
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -25,8 +23,8 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List(usersController.users) { user in
-                NavigationLink(destination: UserView(user: user, usersController: self.usersController)) {
+            List(users, id: \.id) { user in
+                NavigationLink(destination: UserView(user: user)) {
                     HStack {
                         Image("person")
                         .resizable()
@@ -37,7 +35,7 @@ struct ContentView: View {
                         .clipShape(Circle())
 
                         VStack(alignment: .leading) {
-                            Text("\(user.name)")
+                            Text("\(user.name ?? "Unknown Name")")
                                 .foregroundColor(.secondary)
                             Text("\(user.age)")
                                 .foregroundColor(.primaryOrange).opacity(0.8)
@@ -59,21 +57,27 @@ struct ContentView: View {
 
         let request = URLRequest(url: url)
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-                    // Find particular friend
-                    print(decodedResponse.first(where: { $0.name == "Russo Carlson"})!)
-                    DispatchQueue.main.async {
-                        self.usersController.users = decodedResponse
-                    }
-                }
-
-                return
+                
             }
-
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
+
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let data = data {
+//                if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
+//                    // Find particular friend
+//                    print(decodedResponse.first(where: { $0.name == "Russo Carlson"})!)
+//                    DispatchQueue.main.async {
+//                        self.usersController.users = decodedResponse
+//                    }
+//                }
+//
+//                return
+//            }
+//
+//            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+//        }.resume()
     }
 }
 

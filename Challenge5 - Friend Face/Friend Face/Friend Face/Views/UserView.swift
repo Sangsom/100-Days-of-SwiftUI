@@ -15,7 +15,6 @@ struct UserView: View {
     @State private var selectedFriend: Friend?
 
     var user: User
-    var usersController: UserController
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,10 +26,10 @@ struct UserView: View {
                     .clipShape(Circle())
 
                 VStack(alignment: .leading) {
-                    Text("\(user.name), \(user.age)")
+                    Text("\(user.name ?? "Unknown name"), Age")
                         .font(.title)
                         .foregroundColor(.primaryOrange)
-                    Text(user.company)
+                    Text("\(user.company ?? "Unknown company")")
                     Text(user.isActive ? "Active" : "Inactive")
                         .foregroundColor(user.isActive ? Color.green : Color.red)
                 }
@@ -38,59 +37,58 @@ struct UserView: View {
                 Spacer()
             }.padding(.bottom)
 
-            HStack {
-                Image(systemName: "envelope").frame(width: 40)
-                    .foregroundColor(.primaryOrange)
-                Text(user.email)
-            }
-
-            HStack {
-                Image(systemName: "mappin").frame(width: 40)
-                    .foregroundColor(.primaryOrange)
-                Text(user.address)
-
-            }
-
-            Text("About Me")
-                .font(.title)
-                .foregroundColor(.primaryOrange)
-
-
-            Text(user.about)
-
-            Text("Friends")
-                .font(.title)
-                .foregroundColor(.primaryOrange)
-
-            ScrollView(.horizontal, showsIndicators: true) {
-                HStack(spacing: 20) {
-                    ForEach(user.friends) { friend in
-                        NavigationLink(destination: FriendView(friend: friend, usersController: self.usersController)) {
-                            VStack {
-                                Image("person")
-                                    .resizable()
-                                    .frame(width: 80, height: 80)
-                                    .background(self.colorScheme == .dark ? Color.green.opacity(0.4) : Color.black.opacity(0.4))
-                                    .clipShape(Circle())
-                                Text(friend.name)
-                            }.frame(width: 120, height: 120)
-                        }.buttonStyle(PlainButtonStyle())
-                    }
-                }
-            }
-            Spacer()
+//            HStack {
+//                Image(systemName: "envelope").frame(width: 40)
+//                    .foregroundColor(.primaryOrange)
+//                Text("\(user.email)")
+//            }
+//
+//            HStack {
+//                Image(systemName: "mappin").frame(width: 40)
+//                    .foregroundColor(.primaryOrange)
+//                Text("\(user.address)")
+//
+//            }
+//
+//            Text("About Me")
+//                .font(.title)
+//                .foregroundColor(.primaryOrange)
+//
+//
+//            Text("\(user.about)")
+//
+//            Text("Friends")
+//                .font(.title)
+//                .foregroundColor(.primaryOrange)
+//
+//            ScrollView(.horizontal, showsIndicators: true) {
+//                HStack(spacing: 20) {
+//                    ForEach(user.friends, id: \.id) { friend in
+//                        NavigationLink(destination: FriendView(friend: friend)) {
+//                            VStack {
+//                                Image("person")
+//                                    .resizable()
+//                                    .frame(width: 80, height: 80)
+//                                    .background(self.colorScheme == .dark ? Color.green.opacity(0.4) : Color.black.opacity(0.4))
+//                                    .clipShape(Circle())
+//                                Text(friend.name)
+//                            }.frame(width: 120, height: 120)
+//                        }.buttonStyle(PlainButtonStyle())
+//                    }
+//                }
+//            }
+//            Spacer()
         }
         .padding()
         .foregroundColor(.secondary)
         .onAppear {
-            self.usersController.selectedUser = self.user
+//            self.usersController.selectedUser = self.user
         }
     }
 }
 struct UserView_Previews: PreviewProvider {
-    static let user = User(id: "1", isActive: true, name: "Rinalds Domanovs", age: 31, company: "Apple", email: "rinalds.domanovs@gmail.com", address: "Mazcenu Aleja 20C-9", about: "Self-thaught iOS Developer", registered: "05.03.2020", tags: ["ios", "swift"], friends: [Friend(id: "5", name: "Ivars Kims"), Friend(id: "9", name: "Teodors Domanovs")])
     static var previews: some View {
-        UserView(user: user, usersController: UserController())
+        UserView(user: User())
     }
 }
 
