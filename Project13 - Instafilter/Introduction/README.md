@@ -77,3 +77,57 @@ struct ContentView: View {
 ```
 
 ![ActionSheet](https://media.giphy.com/media/jtioNVo18A3uOakPFG/giphy.gif)
+
+## Integrating Core Image with SwiftUI
+
+```swift
+import SwiftUI
+import CoreImage
+import CoreImage.CIFilterBuiltins
+
+struct ContentView: View {
+    @State private var image: Image?
+
+    var body: some View {
+        VStack {
+            image?
+                .resizable()
+                .scaledToFit()
+        }
+        .onAppear(perform: loadImage)
+    }
+
+    func loadImage() {
+        guard let inputImage = UIImage(named: "example") else { return }
+        let beginImage = CIImage(image: inputImage)
+
+        let context = CIContext()
+
+//        let currentFilter = CIFilter.sepiaTone()
+//        currentFilter.inputImage = beginImage
+//        currentFilter.intensity = 1
+
+//        let currentFilter = CIFilter.pixellate()
+//        currentFilter.inputImage = beginImage
+//        currentFilter.scale = 100
+
+        let currentFilter = CIFilter.crystallize()
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        currentFilter.radius = 200
+
+        // get a CIImage from our filter or exit if that fails
+        guard let outputImage = currentFilter.outputImage else { return }
+
+        // attempt to get a CGImage from our CIImage
+        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+            // convert that to a UIImage
+            let uiImage = UIImage(cgImage: cgimg)
+
+            // and convert that to a SwiftUI image
+            image = Image(uiImage: uiImage)
+        }
+    }
+}
+```
+
+![Imgur](https://i.imgur.com/ZsN9VHzm.png)
