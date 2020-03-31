@@ -131,3 +131,46 @@ struct ContentView: View {
 ```
 
 ![Imgur](https://i.imgur.com/ZsN9VHzm.png)
+
+## Wrapping a UIViewController in a SwiftUI view
+
+Create a new file for `ImagePicker``
+
+```swift
+struct ImagePicker: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+          return
+      }
+}
+```
+
+And use in `SwiftUI`
+
+```swift
+struct ContentView: View {
+    @State private var image: Image?
+    @State private var showingImagePicker = false
+
+    var body: some View {
+        VStack {
+            image?
+                .resizable()
+                .scaledToFit()
+
+            Button("Select Image") {
+                self.showingImagePicker = true
+            }
+        }
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker()
+        }
+    }
+}
+```
+
+![ImagePicker](https://media.giphy.com/media/lPpFKfw41kVBLr9U5s/giphy.gif)
