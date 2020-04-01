@@ -176,3 +176,76 @@ struct ContentView: View {
 ![ImagePicker](https://media.giphy.com/media/lPpFKfw41kVBLr9U5s/giphy.gif)
 
 ## Using coordinators to manage SwiftUI view controllers
+
+In this sample it's `ImagePicker` file with coordinators.
+
+```swift
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+
+    @Environment(\.presentationMode) var presentationMode
+
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+        var parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[.originalImage] as? UIImage {
+                parent.image = uiImage
+            }
+
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+          return
+    }
+}
+```
+
+And you can use it in ContentView file.
+
+```swift
+struct ContentView: View {
+    @State private var image: Image?
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+
+    var body: some View {
+        VStack {
+            image?
+                .resizable()
+                .scaledToFit()
+
+            Button("Select Image") {
+                self.showingImagePicker = true
+            }
+        }
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: self.$inputImage)
+        }
+    }
+
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
+}
+```
+
+## Saving images to user's photo library
