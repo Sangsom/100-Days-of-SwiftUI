@@ -70,3 +70,7 @@ All technique projects can be found [here](https://github.com/Sangsom/100-Days-o
 ❖ [Bookworm](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project11%20-%20Bookworm)
 
 ![Bookworm](https://media.giphy.com/media/Ti0bLxqG6a5HByymGG/giphy.gif)
+
+❖ [InstaFilter](https://github.com/Sangsom/100-Days-of-SwiftUI/tree/master/Project13%20-%20Instafilter)
+
+![InstaFilter](https://media.giphy.com/media/KenCcwWWv16ORn5wt7/giphy.gif)
