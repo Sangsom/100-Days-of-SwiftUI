@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilterSheet = false
     @State private var processedImage: UIImage?
+    @State private var showingError = false
 
     let context = CIContext()
 
@@ -33,20 +34,23 @@ struct ContentView: View {
         )
 
         return NavigationView {
-            ZStack {
-                Rectangle()
-                    .fill(Color.secondary)
+            VStack {
+                ZStack {
+                    Rectangle()
+                        .fill(Color.secondary)
 
-                // display the image
-                if image != nil {
-                    image?
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    Text("Tap to select a picture")
-                        .foregroundColor(.white)
-                        .font(.headline)
+                    // display the image
+                    if image != nil {
+                        image?
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Text("Tap to select a picture")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
                 }
+
 
                 HStack {
                     Text("Intensity")
@@ -54,7 +58,7 @@ struct ContentView: View {
                 }.padding(.vertical)
 
                 HStack {
-                    Button("Change Filter") {
+                    Button("Current Filter: \(currentFilter.name)") {
                         self.showingFilterSheet = true
                     }
 
@@ -62,7 +66,10 @@ struct ContentView: View {
 
                     Button("Save") {
                         // save the picture
-                        guard let processedImage = self.processedImage else { return }
+                        guard let processedImage = self.processedImage else {
+                            self.showingError = true
+                            return
+                        }
 
                         let imageSaver = ImageSaver()
 
@@ -100,6 +107,9 @@ struct ContentView: View {
                 .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
                 .cancel()
             ])
+        }
+        .alert(isPresented: $showingError) {
+            Alert(title: Text("No image"), message: Text("Sorry, there is no image selected for saving."), dismissButton: .default(Text("OK")))
         }
     }
 
