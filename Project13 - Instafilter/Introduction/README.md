@@ -174,3 +174,5 @@ struct ContentView: View {
 ```
 
 ![ImagePicker](https://media.giphy.com/media/lPpFKfw41kVBLr9U5s/giphy.gif)
+
+## Using coordinators to manage SwiftUI view controllers
