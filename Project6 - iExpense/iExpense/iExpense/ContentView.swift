@@ -37,6 +37,7 @@ struct ContentView: View {
                 }) {
                     Image(systemName: "plus")
                 }
+                .padding()
             )
         }
         .sheet(isPresented: $showingAddExpenses) {
