@@ -9,9 +9,14 @@
 import SwiftUI
 import MapKit
 
-struct MapView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct MapView: UIViewRepresentable {
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        return mapView
+    }
+
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+
     }
 }
 
