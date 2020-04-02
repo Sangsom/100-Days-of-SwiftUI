@@ -62,3 +62,5 @@ struct ContentView: View {
     }
 }
 ```
+
+## Switching view states with enums
