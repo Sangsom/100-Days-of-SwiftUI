@@ -10,9 +10,17 @@ import SwiftUI
 import LocalAuthentication
 
 struct ContentView: View {
+    @State private var isUnlocked = false
+
     var body: some View {
-        MapView()
-            .edgesIgnoringSafeArea(.all)
+        VStack {
+            if self.isUnlocked {
+                Text("Unlocked")
+            } else {
+                Text("Locked")
+            }
+        }
+        .onAppear(perform: authenticate)
     }
 
     func authenticate() {
@@ -29,6 +37,7 @@ struct ContentView: View {
                 DispatchQueue.main.async {
                     if success {
                         // authenticated successfully
+                        self.isUnlocked = true
                     } else {
                         // there was a problem
                     }
