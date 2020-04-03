@@ -2,7 +2,7 @@
 //  MapView.swift
 //  BucketList
 //
-//  Created by Rinalds Domanovs on 02/04/2020.
+//  Created by Rinalds Domanovs on 03/04/2020.
 //  Copyright © 2020 Rinalds Domanovs. All rights reserved.
 //
 
@@ -10,43 +10,26 @@ import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: MapView
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        return mapView
+    }
 
-        init(_ parent: MapView) {
-            self.parent = parent
-        }
+    func updateUIView(_ uiView: MKMapView, context: Context) {
 
-        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            print(mapView.centerCoordinate)
-        }
-
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
-            view.canShowCallout = true
-            return view
-        }
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
-        mapView.delegate = context.coordinator
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: MapView
 
-        let annotation = MKPointAnnotation()
-        annotation.title = "London"
-        annotation.subtitle = "Capital of England"
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.5, longitude: 0.13)
-        mapView.addAnnotation(annotation)
-
-        return mapView
-    }
-
-    func updateUIView(_ uiView: MKMapView, context: Context) {
-
+        init(_ parent: MapView) {
+            self.parent = parent
+        }
     }
 }
 
