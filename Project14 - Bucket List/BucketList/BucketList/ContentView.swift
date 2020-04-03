@@ -7,10 +7,20 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+
     var body: some View {
-        Text("Hello")
+        ZStack {
+            MapView(centerCoordinate: $centerCoordinate)
+                .edgesIgnoringSafeArea(.all)
+            Circle()
+                .fill(Color.blue)
+                .opacity(0.3)
+                .frame(width: 32, height: 32)
+        }
     }
 }
 
