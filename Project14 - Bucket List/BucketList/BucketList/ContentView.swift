@@ -29,6 +29,7 @@ struct ContentView: View {
                     Button(action: {
                         let newLocation = MKPointAnnotation()
                         newLocation.coordinate = self.centerCoordinate
+                        newLocation.title = "Example location"
                         self.locations.append(newLocation)
                     }) {
                         Image(systemName: "plus")
