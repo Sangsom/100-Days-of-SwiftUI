@@ -9,10 +9,12 @@
 import SwiftUI
 import LocalAuthentication
 
-
-
 struct ContentView: View {
     @State private var isUnlocked = false
+
+    @State private var errorTitle = ""
+    @State private var errorMessage = ""
+    @State private var showError = false
 
     var body: some View {
         ZStack {
@@ -27,6 +29,9 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule())
             }
+        }
+        .alert(isPresented: $showError) {
+            Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
     }
 
@@ -44,11 +49,17 @@ struct ContentView: View {
                         self.isUnlocked = true
                     } else {
                         // error
+                        self.errorTitle = "Authentication Error"
+                        self.errorMessage = "Failed to authenticate, please try again"
+                        self.showError = true
                     }
                 }
             }
         } else {
             // no biometrics
+            self.errorTitle = "No Biometris"
+            self.errorMessage = "Sorry, you don't have any biometris."
+            self.showError = true
         }
     }
 }
