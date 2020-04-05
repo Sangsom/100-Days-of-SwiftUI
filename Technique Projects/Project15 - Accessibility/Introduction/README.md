@@ -36,3 +36,34 @@ struct ContentView: View {
     }
 }
 ```
+
+## Hiding and grouping accessibility data
+
+You can hide individual views from VoiceOver.
+
+```swift
+Image(decorative: "character")
+    .accessibility(hidden: true)
+```
+
+You can also group views, in this case by grouping VStack - VoiceOver will read both Text views as a one.
+
+```swift
+VStack {
+    Text("Your score is")
+    Text("1000")
+        .font(.title)
+}.accessibilityElement(children: .combine)
+```
+
+By default, when Voice Over will read grouped views there will be pause between each view, so in this example we want to ignore the pause read and add custom label to read it without any delay.
+
+```swift
+VStack {
+    Text("Your score is")
+    Text("1000")
+        .font(.title)
+}
+.accessibilityElement(children: .ignore)
+.accessibility(label: Text("Your score is 1000"))
+```
