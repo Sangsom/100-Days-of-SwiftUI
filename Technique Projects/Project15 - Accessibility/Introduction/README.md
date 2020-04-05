@@ -67,3 +67,32 @@ VStack {
 .accessibilityElement(children: .ignore)
 .accessibility(label: Text("Your score is 1000"))
 ```
+
+## Reading values from controls
+
+By default, VoiceOver will read a Slider values in %, but we can change it to read just a number like this.
+
+```swift
+struct ContentView: View {
+    @State private var estimate = 25.0
+
+    var body: some View {
+        Slider(value: $estimate, in: 0...50)
+        .padding()
+        .accessibility(value: Text("\(Int(estimate))"))
+    }
+}
+```
+
+Here we can adjust how VoiceOver will read values after they are changed.
+
+```swift
+struct ContentView: View {
+    @State private var rating = 3
+
+    var body: some View {
+        Stepper("Rate our service: \(rating)/5", value: $rating, in: 1...5)
+            .accessibility(value: Text("\(rating) out of 5"))
+    }
+}
+```
