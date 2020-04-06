@@ -10,7 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Button(action: {
+            print("Uploading image")
+        }) {
+            Image("upload")
+        }
+    .shadow(radius: 5)
     }
 }
 
