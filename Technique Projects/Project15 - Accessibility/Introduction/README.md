@@ -96,3 +96,9 @@ struct ContentView: View {
     }
 }
 ```
+
+## Operator overloading
+
+We can extend existing operators to do a new things with operator overloading.
+
+In this example we are adding extension to `Int` that will allow us to multiply an `Int` and `CGFloat`.
