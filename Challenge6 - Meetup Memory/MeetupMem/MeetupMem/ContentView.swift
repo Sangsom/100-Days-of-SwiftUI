@@ -9,13 +9,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var name = ""
+
     var body: some View {
-        Button(action: {
-            print("Uploading image")
-        }) {
-            Image("upload")
+        VStack {
+            Button(action: {
+                print("Uploading image")
+            }) {
+                Image("upload")
+            }
+            .shadow(radius: 5)
+
+            TextField("Name", text: $name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .keyboardType(.asciiCapable)
+                .padding()
+
+            Button(action: {
+                print("Saving")
+            }) {    
+                Text("Save")
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 40)
+                    .background(Color(UIColor.systemBlue))
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    .padding()
+            }
+            .shadow(radius: 5)
         }
-    .shadow(radius: 5)
+
     }
 }
 
