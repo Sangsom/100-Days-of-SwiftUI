@@ -102,3 +102,77 @@ struct ContentView: View {
 We can extend existing operators to do a new things with operator overloading.
 
 In this example we are adding extension to `Int` that will allow us to multiply an `Int` and `CGFloat`.
+
+```swift
+extension Int {
+    static func * (lhs: Int, rhs: CGFloat) -> CGFloat {
+        return CGFloat(lhs) * rhs
+    }
+}
+```
+
+Here’s an extension that adds `*` between any kind of integer and both `CGFloat` and `Double`, regardless of whether the integer is on the left or on the right:
+
+```swift
+extension BinaryInteger {
+    static func * (lhs: Self, rhs: CGFloat) -> CGFloat {
+        return CGFloat(lhs) * rhs
+    }
+
+    static func * (lhs: CGFloat, rhs: Self) -> CGFloat {
+        return lhs * CGFloat(rhs)
+    }
+
+    static func * (lhs: Self, rhs: Double) -> Double {
+        return Double(lhs) * rhs
+    }
+
+    static func * (lhs: Double, rhs: Self) -> Double {
+        return lhs * Double(rhs)
+    }
+}
+```
+
+## Custom property wrappers
+
+Here we are creating `NonNegative` property wrapper that will not allow to have negative integer.
+
+```swift
+struct NonNegative<Value: BinaryInteger> {
+    var value: Value
+
+    init(wrappedValue: Value) {
+        if wrappedValue < 0 {
+            self.value = 0
+        } else {
+            self.value = wrappedValue
+        }
+    }
+
+    var wrappedValue: Value {
+        get { value }
+        set {
+            if newValue < 0 {
+                value = 0
+            } else {
+                value = newValue
+            }
+        }
+    }
+}
+```
+
+This will return 0.
+
+```swift
+var example = NonNegative(wrappedValue: 5)
+example.wrappedValue -= 10
+print(example.wrappedValue)
+```
+
+We can use property wrapper for structs.
+
+```swift
+@propertyWrapper
+struct NonNegative<Value: BinaryInteger> {
+```
