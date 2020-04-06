@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
     @State private var name = ""
+    @State private var keyboardHeight: CGFloat = 0
 
     var body: some View {
         VStack {
@@ -38,7 +40,9 @@ struct ContentView: View {
             }
             .shadow(radius: 5)
         }
-
+        .padding(.bottom, keyboardHeight)
+        .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+        .animation(.easeOut(duration: 0.4))
     }
 }
 
