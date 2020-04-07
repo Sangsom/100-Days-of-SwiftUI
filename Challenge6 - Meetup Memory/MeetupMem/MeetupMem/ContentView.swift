@@ -10,15 +10,30 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
+    @State private var image: Image?
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+
     @State private var name = ""
     @State private var keyboardHeight: CGFloat = 0
 
     var body: some View {
         VStack {
+
+
             Button(action: {
-                print("Uploading image")
+                self.showingImagePicker = true
             }) {
-                Image("upload")
+                if image != nil {
+                    image?
+                        .renderingMode(.original)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+
+                } else {
+                    Image("upload")
+                }
             }
             .shadow(radius: 5)
 
@@ -43,6 +58,14 @@ struct ContentView: View {
         .padding(.bottom, keyboardHeight)
         .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
         .animation(.easeOut(duration: 0.4))
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: self.$inputImage)
+        }
+    }
+
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
     }
 }
 
