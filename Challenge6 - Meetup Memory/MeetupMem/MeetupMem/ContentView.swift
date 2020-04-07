@@ -17,6 +17,14 @@ struct ContentView: View {
     @State private var name = ""
     @State private var keyboardHeight: CGFloat = 0
 
+    var isValid: Bool {
+        if name.count > 3 && image != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+
     var body: some View {
         VStack {
 
@@ -48,12 +56,13 @@ struct ContentView: View {
                 Text("Save")
                     .frame(maxWidth: .infinity)
                     .frame(height: 40)
-                    .background(Color(UIColor.systemBlue))
+                    .background(isValid ? Color(UIColor.systemBlue) : Color(UIColor.systemGray))
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     .padding()
             }
             .shadow(radius: 5)
+            .disabled(!isValid)
         }
         .padding(.bottom, keyboardHeight)
         .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
