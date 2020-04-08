@@ -176,3 +176,22 @@ We can use property wrapper for structs.
 @propertyWrapper
 struct NonNegative<Value: BinaryInteger> {
 ```
+
+Or
+
+```swift
+struct User {
+    @NonNegative var score = 0
+}
+```
+
+And now we can create a user and remove points freely, knowing for sure that score will never go below 0.
+
+```swift
+var user = User()
+user.score += 10
+print(user.score)
+
+user.score -= 20
+print(user.score)
+```
