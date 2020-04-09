@@ -156,3 +156,7 @@ struct ContentView: View {
     }
 }
 ```
+
+## Context Menu
+
+![Context menu](https://media.giphy.com/media/VDHFV9608mjnQf3JyC/giphy.gif)
